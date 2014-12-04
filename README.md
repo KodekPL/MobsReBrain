@@ -27,7 +27,7 @@ What is different:
  * Removed picking up and placing down blocks from enderman
 
  * Removed looking at guardians from guardian
- * Removed following of carrot on a stick from pig
+ * Removed following of carrot on a stick from pig (not when player is sitting on the pig)
  * Removed hiding in blocks from silverfish
  * Removed begging from wolf
  * Removed moving through village from zombie
