@@ -36,8 +36,9 @@ public class NoBrainCaveSpider extends EntityCaveSpider implements NoBrainEntity
         this.goalSelector.a(3, new PathfinderGoalLeapAtTarget(this, 0.4F));
 
         // PathfinderGoalSpiderMeleeAttack
-        final Object pathGoalSpiderMeleeAttack = ReflectionsUtils.createPrivateInstance("net.minecraft.server.v1_8_R1.PathfinderGoalSpiderMeleeAttack",
-                new Class<?>[] { EntitySpider.class, Class.class }, this, EntityHuman.class);
+        final Object pathGoalSpiderMeleeAttack = ReflectionsUtils.createPrivateInstance(
+                "net.minecraft.server.v1_8_R1.PathfinderGoalSpiderMeleeAttack", new Class<?>[] { EntitySpider.class, Class.class }, this,
+                EntityHuman.class);
 
         this.goalSelector.a(4, (PathfinderGoalMeleeAttack) pathGoalSpiderMeleeAttack);
 

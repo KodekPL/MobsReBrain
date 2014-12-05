@@ -53,9 +53,9 @@ public class NoBrainIronGolem extends EntityIronGolem implements NoBrainEntity {
         this.targetSelector.a(2, new PathfinderGoalHurtByTarget(this, false, new Class[0]));
 
         // PathfinderGoalNearestGolemTarget
-        final Object pathGoalNearGolemTarget = ReflectionsUtils.createPrivateInstance("net.minecraft.server.v1_8_R1.PathfinderGoalNearestGolemTarget",
-                new Class<?>[] { EntityCreature.class, Class.class, int.class, boolean.class, boolean.class, Predicate.class }, this,
-                EntityInsentient.class, 10, false, true, IMonster.e);
+        final Object pathGoalNearGolemTarget = ReflectionsUtils.createPrivateInstance(
+                "net.minecraft.server.v1_8_R1.PathfinderGoalNearestGolemTarget", new Class<?>[] { EntityCreature.class, Class.class, int.class,
+                        boolean.class, boolean.class, Predicate.class }, this, EntityInsentient.class, 10, false, true, IMonster.e);
 
         this.targetSelector.a(3, (PathfinderGoalNearestAttackableTarget) pathGoalNearGolemTarget);
     }

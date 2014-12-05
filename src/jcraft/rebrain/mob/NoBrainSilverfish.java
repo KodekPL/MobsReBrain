@@ -32,8 +32,8 @@ public class NoBrainSilverfish extends EntitySilverfish implements NoBrainEntity
         this.goalSelector.a(1, new PathfinderGoalFloat(this));
 
         // PathfinderGoalSilverfishWakeOthers
-        final Object pathGoalSilverfishWakeOthers = ReflectionsUtils.createPrivateInstance("net.minecraft.server.v1_8_R1.PathfinderGoalSilverfishWakeOthers",
-                new Class<?>[] { EntitySilverfish.class }, this);
+        final Object pathGoalSilverfishWakeOthers = ReflectionsUtils.createPrivateInstance(
+                "net.minecraft.server.v1_8_R1.PathfinderGoalSilverfishWakeOthers", new Class<?>[] { EntitySilverfish.class }, this);
 
         this.goalSelector.a(3, (PathfinderGoal) pathGoalSilverfishWakeOthers);
         ReflectionsUtils.setPrivateField("b", EntitySilverfish.class, this, pathGoalSilverfishWakeOthers);
