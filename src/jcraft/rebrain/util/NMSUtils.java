@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 public class NMSUtils {
 
     public static Object getPrivateField(String fieldName, Class clazz, Object object) {
-        final Field field;
+        Field field;
         Object o = null;
 
         try {
@@ -24,7 +24,7 @@ public class NMSUtils {
 
     public static void setPrivateField(String fieldName, Class clazz, Object classObject, Object classValue) {
         try {
-            final Field field = clazz.getDeclaredField(fieldName);
+            Field field = clazz.getDeclaredField(fieldName);
 
             field.setAccessible(true);
 

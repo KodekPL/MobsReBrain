@@ -21,18 +21,18 @@ import net.minecraft.server.v1_8_R1.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerShearEntityEvent;
 
-public class NoBrainMushroomCow extends EntityMushroomCow {
+public class NoBrainMushroomCow extends EntityMushroomCow implements NoBrainEntity {
 
     public NoBrainMushroomCow(World world) {
         super(world);
 
-        final List goalB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
+        List goalB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
         goalB.clear();
-        final List goalC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
+        List goalC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
         goalC.clear();
-        final List targetB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
+        List targetB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
         targetB.clear();
-        final List targetC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
+        List targetC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
         targetC.clear();
 
         a(0.9F, 1.3F);
@@ -55,7 +55,7 @@ public class NoBrainMushroomCow extends EntityMushroomCow {
     }
 
     public boolean a(EntityHuman entityhuman) {
-        final ItemStack itemstack = entityhuman.inventory.getItemInHand();
+        ItemStack itemstack = entityhuman.inventory.getItemInHand();
 
         if ((itemstack != null) && (itemstack.getItem() == Items.BOWL) && (getAge() >= 0)) {
             if (itemstack.count == 1) {
@@ -70,7 +70,7 @@ public class NoBrainMushroomCow extends EntityMushroomCow {
         }
 
         if ((itemstack != null) && (itemstack.getItem() == Items.SHEARS) && (getAge() >= 0)) {
-            final PlayerShearEntityEvent event = new PlayerShearEntityEvent((Player) entityhuman.getBukkitEntity(), getBukkitEntity());
+            PlayerShearEntityEvent event = new PlayerShearEntityEvent((Player) entityhuman.getBukkitEntity(), getBukkitEntity());
 
             this.world.getServer().getPluginManager().callEvent(event);
 
@@ -83,7 +83,7 @@ public class NoBrainMushroomCow extends EntityMushroomCow {
             this.world.addParticle(EnumParticle.EXPLOSION_LARGE, this.locX, this.locY + this.length / 2.0F, this.locZ, 0.0D, 0.0D, 0.0D, new int[0]);
 
             if (!this.world.isStatic) {
-                final NoBrainCow entitycow = new NoBrainCow(this.world);
+                NoBrainCow entitycow = new NoBrainCow(this.world);
 
                 entitycow.setPositionRotation(this.locX, this.locY, this.locZ, this.yaw, this.pitch);
                 entitycow.setHealth(getHealth());

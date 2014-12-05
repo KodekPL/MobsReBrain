@@ -25,7 +25,7 @@ import net.minecraft.server.v1_8_R1.World;
 
 import org.bukkit.craftbukkit.v1_8_R1.entity.CraftVillager;
 
-public class NoBrainVillager extends EntityVillager {
+public class NoBrainVillager extends EntityVillager implements NoBrainEntity {
 
     public NoBrainVillager(World world) {
         super(world, world.random.nextInt(5));
@@ -34,13 +34,13 @@ public class NoBrainVillager extends EntityVillager {
     public NoBrainVillager(World world, int i) {
         super(world, i);
 
-        final List goalB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
+        List goalB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
         goalB.clear();
-        final List goalC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
+        List goalC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
         goalC.clear();
-        final List targetB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
+        List targetB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
         targetB.clear();
-        final List targetC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
+        List targetC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
         targetC.clear();
 
         a(0.6F, 1.8F);

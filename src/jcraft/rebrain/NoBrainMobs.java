@@ -9,6 +9,7 @@ import jcraft.rebrain.mob.NoBrainCow;
 import jcraft.rebrain.mob.NoBrainCreeper;
 import jcraft.rebrain.mob.NoBrainEnderman;
 import jcraft.rebrain.mob.NoBrainEndermite;
+import jcraft.rebrain.mob.NoBrainEntity;
 import jcraft.rebrain.mob.NoBrainGuardian;
 import jcraft.rebrain.mob.NoBrainIronGolem;
 import jcraft.rebrain.mob.NoBrainMushroomCow;
@@ -23,6 +24,7 @@ import jcraft.rebrain.mob.NoBrainWitch;
 import jcraft.rebrain.mob.NoBrainWolf;
 import jcraft.rebrain.mob.NoBrainZombie;
 import jcraft.rebrain.util.NMSUtils;
+import net.minecraft.server.v1_8_R1.BlockPosition;
 import net.minecraft.server.v1_8_R1.Entity;
 import net.minecraft.server.v1_8_R1.EntityBlaze;
 import net.minecraft.server.v1_8_R1.EntityCaveSpider;
@@ -32,6 +34,7 @@ import net.minecraft.server.v1_8_R1.EntityCreeper;
 import net.minecraft.server.v1_8_R1.EntityEnderman;
 import net.minecraft.server.v1_8_R1.EntityEndermite;
 import net.minecraft.server.v1_8_R1.EntityGuardian;
+import net.minecraft.server.v1_8_R1.EntityInsentient;
 import net.minecraft.server.v1_8_R1.EntityIronGolem;
 import net.minecraft.server.v1_8_R1.EntityMushroomCow;
 import net.minecraft.server.v1_8_R1.EntityPig;
@@ -44,10 +47,12 @@ import net.minecraft.server.v1_8_R1.EntityVillager;
 import net.minecraft.server.v1_8_R1.EntityWitch;
 import net.minecraft.server.v1_8_R1.EntityWolf;
 import net.minecraft.server.v1_8_R1.EntityZombie;
+import net.minecraft.server.v1_8_R1.GroupDataEntity;
 import net.minecraft.server.v1_8_R1.World;
 
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_8_R1.entity.CraftEntity;
 import org.bukkit.entity.EntityType;
 
 public enum NoBrainMobs {
@@ -92,6 +97,10 @@ public enum NoBrainMobs {
         return this.name;
     }
 
+    public Class<? extends Entity> getCustomClass() {
+        return this.customClass;
+    }
+
     public EntityType getType() {
         return this.type;
     }
@@ -129,11 +138,19 @@ public enum NoBrainMobs {
         return null;
     }
 
+    public static boolean isNoBrainMob(org.bukkit.entity.Entity entity) {
+        final Entity nmsEntity = ((CraftEntity) entity).getHandle();
+
+        return nmsEntity instanceof NoBrainEntity;
+    }
+
     public static Entity spawnEntity(NoBrainMobs noBrainMob, Location loc) {
         final World nmsWorld = ((CraftWorld) loc.getWorld()).getHandle();
         final Entity entity = (Entity) noBrainMob.getInstance(nmsWorld);
 
         entity.setLocation(loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(), loc.getPitch());
+
+        ((EntityInsentient) entity).prepare(entity.world.E(new BlockPosition(entity)), (GroupDataEntity) null);
 
         nmsWorld.addEntity(entity);
 
@@ -141,7 +158,7 @@ public enum NoBrainMobs {
     }
 
     public static org.bukkit.entity.Entity convertToBukkit(Entity entity) {
-        return entity.getBukkitEntity();
+        return ((org.bukkit.entity.Entity) entity.getBukkitEntity());
     }
 
 }
