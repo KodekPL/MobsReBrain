@@ -107,7 +107,11 @@ public enum NoBrainMobs {
 
     public Object getInstance(World world) {
         try {
-            return this.customClass.getConstructors()[0].newInstance(world);
+            if (this.getType() == EntityType.VILLAGER) {
+                return this.customClass.getConstructors()[0].newInstance(world, world.random.nextInt(5));
+            } else {
+                return this.customClass.getConstructors()[0].newInstance(world);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

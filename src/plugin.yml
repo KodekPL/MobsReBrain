@@ -1,5 +1,5 @@
 name: jEssMobsReBrain
-version: 1.0
+version: 1.0.2
 author: Kodek
 main: jcraft.rebrain.ReBrainPlugin
 load: STARTUP
