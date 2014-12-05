@@ -2,7 +2,7 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
-import jcraft.rebrain.util.NMSUtils;
+import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityHuman;
 import net.minecraft.server.v1_8_R1.EntitySpider;
 import net.minecraft.server.v1_8_R1.PathfinderGoalFloat;
@@ -19,13 +19,13 @@ public class NoBrainSpider extends EntitySpider implements NoBrainEntity {
     public NoBrainSpider(World world) {
         super(world);
 
-        List goalB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
+        List goalB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
         goalB.clear();
-        List goalC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
+        List goalC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
         goalC.clear();
-        List targetB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
+        List targetB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
         targetB.clear();
-        List targetC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
+        List targetC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
         targetC.clear();
 
         a(1.4F, 0.9F);
@@ -35,7 +35,7 @@ public class NoBrainSpider extends EntitySpider implements NoBrainEntity {
         this.goalSelector.a(3, new PathfinderGoalLeapAtTarget(this, 0.4F));
 
         // PathfinderGoalSpiderMeleeAttack
-        final Object pathGoalSpiderMeleeAttack = NMSUtils.createPrivateInstance("net.minecraft.server.v1_8_R1.PathfinderGoalSpiderMeleeAttack",
+        final Object pathGoalSpiderMeleeAttack = ReflectionsUtils.createPrivateInstance("net.minecraft.server.v1_8_R1.PathfinderGoalSpiderMeleeAttack",
                 new Class<?>[] { EntitySpider.class, Class.class }, this, EntityHuman.class);
 
         this.goalSelector.a(4, (PathfinderGoalMeleeAttack) pathGoalSpiderMeleeAttack);
@@ -49,7 +49,7 @@ public class NoBrainSpider extends EntitySpider implements NoBrainEntity {
         this.targetSelector.a(1, new PathfinderGoalHurtByTarget(this, false, new Class[0]));
 
         // PathfinderGoalSpiderNearestAttackableTarget
-        final Object pathGoalSpiderNearestAttackableTarget = NMSUtils.createPrivateInstance(
+        final Object pathGoalSpiderNearestAttackableTarget = ReflectionsUtils.createPrivateInstance(
                 "net.minecraft.server.v1_8_R1.PathfinderGoalSpiderNearestAttackableTarget", new Class<?>[] { EntitySpider.class, Class.class }, this,
                 EntityHuman.class);
 

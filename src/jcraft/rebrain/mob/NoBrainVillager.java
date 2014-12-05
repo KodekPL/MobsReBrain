@@ -2,7 +2,7 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
-import jcraft.rebrain.util.NMSUtils;
+import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityHuman;
 import net.minecraft.server.v1_8_R1.EntityInsentient;
 import net.minecraft.server.v1_8_R1.EntityVillager;
@@ -34,13 +34,13 @@ public class NoBrainVillager extends EntityVillager implements NoBrainEntity {
     public NoBrainVillager(World world, int i) {
         super(world, i);
 
-        List goalB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
+        List goalB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
         goalB.clear();
-        List goalC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
+        List goalC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
         goalC.clear();
-        List targetB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
+        List targetB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
         targetB.clear();
-        List targetC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
+        List targetC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
         targetC.clear();
 
         a(0.6F, 1.8F);
@@ -71,6 +71,16 @@ public class NoBrainVillager extends EntityVillager implements NoBrainEntity {
         this.goalSelector.a(10, new PathfinderGoalLookAtPlayer(this, EntityInsentient.class, 8.0F));
 
         j(true);
+    }
+
+    public int getCareer() {
+        final int bv = (int) ReflectionsUtils.getPrivateField("bv", EntityVillager.class, this);
+
+        return bv;
+    }
+
+    public void initCareer() {
+        ReflectionsUtils.invokePrivateMethod("cu", EntityVillager.class, this);
     }
 
 }

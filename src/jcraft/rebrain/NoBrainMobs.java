@@ -23,7 +23,7 @@ import jcraft.rebrain.mob.NoBrainVillager;
 import jcraft.rebrain.mob.NoBrainWitch;
 import jcraft.rebrain.mob.NoBrainWolf;
 import jcraft.rebrain.mob.NoBrainZombie;
-import jcraft.rebrain.util.NMSUtils;
+import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.BlockPosition;
 import net.minecraft.server.v1_8_R1.Entity;
 import net.minecraft.server.v1_8_R1.EntityBlaze;
@@ -121,11 +121,11 @@ public enum NoBrainMobs {
 
     private void addToMaps(Class customClass, Class orgClass, String name, int id) {
         // Add custom entity classes
-        ((Map) NMSUtils.getPrivateField("c", net.minecraft.server.v1_8_R1.EntityTypes.class, null)).put(name, customClass);
-        ((Map) NMSUtils.getPrivateField("d", net.minecraft.server.v1_8_R1.EntityTypes.class, null)).put(customClass, name);
-        ((Map) NMSUtils.getPrivateField("e", net.minecraft.server.v1_8_R1.EntityTypes.class, null)).put(Integer.valueOf(id), customClass);
-        ((Map) NMSUtils.getPrivateField("f", net.minecraft.server.v1_8_R1.EntityTypes.class, null)).put(customClass, Integer.valueOf(id));
-        ((Map) NMSUtils.getPrivateField("g", net.minecraft.server.v1_8_R1.EntityTypes.class, null)).put(name, Integer.valueOf(id));
+        ((Map) ReflectionsUtils.getPrivateField("c", net.minecraft.server.v1_8_R1.EntityTypes.class, null)).put(name, customClass);
+        ((Map) ReflectionsUtils.getPrivateField("d", net.minecraft.server.v1_8_R1.EntityTypes.class, null)).put(customClass, name);
+        ((Map) ReflectionsUtils.getPrivateField("e", net.minecraft.server.v1_8_R1.EntityTypes.class, null)).put(Integer.valueOf(id), customClass);
+        ((Map) ReflectionsUtils.getPrivateField("f", net.minecraft.server.v1_8_R1.EntityTypes.class, null)).put(customClass, Integer.valueOf(id));
+        ((Map) ReflectionsUtils.getPrivateField("g", net.minecraft.server.v1_8_R1.EntityTypes.class, null)).put(name, Integer.valueOf(id));
     }
 
     public static NoBrainMobs getNoBrainMob(EntityType type) {

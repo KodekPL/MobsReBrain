@@ -2,7 +2,7 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
-import jcraft.rebrain.util.NMSUtils;
+import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityCreature;
 import net.minecraft.server.v1_8_R1.EntityInsentient;
 import net.minecraft.server.v1_8_R1.EntityIronGolem;
@@ -26,13 +26,13 @@ public class NoBrainIronGolem extends EntityIronGolem implements NoBrainEntity {
     public NoBrainIronGolem(World world) {
         super(world);
 
-        List goalB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
+        List goalB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
         goalB.clear();
-        List goalC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
+        List goalC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
         goalC.clear();
-        List targetB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
+        List targetB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
         targetB.clear();
-        List targetC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
+        List targetC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
         targetC.clear();
 
         a(1.4F, 2.9F);
@@ -53,7 +53,7 @@ public class NoBrainIronGolem extends EntityIronGolem implements NoBrainEntity {
         this.targetSelector.a(2, new PathfinderGoalHurtByTarget(this, false, new Class[0]));
 
         // PathfinderGoalNearestGolemTarget
-        final Object pathGoalNearGolemTarget = NMSUtils.createPrivateInstance("net.minecraft.server.v1_8_R1.PathfinderGoalNearestGolemTarget",
+        final Object pathGoalNearGolemTarget = ReflectionsUtils.createPrivateInstance("net.minecraft.server.v1_8_R1.PathfinderGoalNearestGolemTarget",
                 new Class<?>[] { EntityCreature.class, Class.class, int.class, boolean.class, boolean.class, Predicate.class }, this,
                 EntityInsentient.class, 10, false, true, IMonster.e);
 

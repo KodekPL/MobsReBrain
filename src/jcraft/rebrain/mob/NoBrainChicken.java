@@ -2,7 +2,7 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
-import jcraft.rebrain.util.NMSUtils;
+import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityChicken;
 import net.minecraft.server.v1_8_R1.Items;
 import net.minecraft.server.v1_8_R1.PathfinderGoalBreed;
@@ -17,13 +17,13 @@ public class NoBrainChicken extends EntityChicken implements NoBrainEntity {
     public NoBrainChicken(World world) {
         super(world);
 
-        List goalB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
+        List goalB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
         goalB.clear();
-        List goalC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
+        List goalC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
         goalC.clear();
-        List targetB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
+        List targetB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
         targetB.clear();
-        List targetC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
+        List targetC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
         targetC.clear();
 
         a(0.4F, 0.7F);

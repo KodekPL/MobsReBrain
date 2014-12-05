@@ -2,7 +2,7 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
-import jcraft.rebrain.util.NMSUtils;
+import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityBlaze;
 import net.minecraft.server.v1_8_R1.EntityHuman;
 import net.minecraft.server.v1_8_R1.PathfinderGoal;
@@ -18,20 +18,20 @@ public class NoBrainBlaze extends EntityBlaze implements NoBrainEntity {
     public NoBrainBlaze(World world) {
         super(world);
 
-        List goalB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
+        List goalB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
         goalB.clear();
-        List goalC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
+        List goalC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
         goalC.clear();
-        List targetB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
+        List targetB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
         targetB.clear();
-        List targetC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
+        List targetC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
         targetC.clear();
 
         this.fireProof = true;
         this.b_ = 10;
 
         // PathfinderGoalBlazeFireball
-        final Object pathGoalBlazeFireball = NMSUtils.createPrivateInstance("net.minecraft.server.v1_8_R1.PathfinderGoalBlazeFireball",
+        final Object pathGoalBlazeFireball = ReflectionsUtils.createPrivateInstance("net.minecraft.server.v1_8_R1.PathfinderGoalBlazeFireball",
                 new Class<?>[] { EntityBlaze.class }, this);
 
         this.goalSelector.a(4, (PathfinderGoal) pathGoalBlazeFireball);

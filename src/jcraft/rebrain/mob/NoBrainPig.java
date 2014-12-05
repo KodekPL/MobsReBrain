@@ -2,7 +2,7 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
-import jcraft.rebrain.util.NMSUtils;
+import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityPig;
 import net.minecraft.server.v1_8_R1.Items;
 import net.minecraft.server.v1_8_R1.Navigation;
@@ -19,13 +19,13 @@ public class NoBrainPig extends EntityPig implements NoBrainEntity {
     public NoBrainPig(World world) {
         super(world);
 
-        List goalB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
+        List goalB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
         goalB.clear();
-        List goalC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
+        List goalC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
         goalC.clear();
-        List targetB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
+        List targetB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
         targetB.clear();
-        List targetC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
+        List targetC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
         targetC.clear();
 
         a(0.9F, 0.9F);
@@ -39,7 +39,7 @@ public class NoBrainPig extends EntityPig implements NoBrainEntity {
         final PathfinderGoalPassengerCarrotStick goalPassengerCarrotStick = new PathfinderGoalPassengerCarrotStick(this, 0.3F);
 
         this.goalSelector.a(2, goalPassengerCarrotStick);
-        NMSUtils.setPrivateField("bk", EntityPig.class, this, goalPassengerCarrotStick);
+        ReflectionsUtils.setPrivateField("bk", EntityPig.class, this, goalPassengerCarrotStick);
 
         this.goalSelector.a(3, new PathfinderGoalBreed(this, 1.0D));
 

@@ -2,7 +2,7 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
-import jcraft.rebrain.util.NMSUtils;
+import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityEnderman;
 import net.minecraft.server.v1_8_R1.PathfinderGoalHurtByTarget;
 import net.minecraft.server.v1_8_R1.PathfinderGoalMeleeAttack;
@@ -16,13 +16,13 @@ public class NoBrainEnderman extends EntityEnderman implements NoBrainEntity {
     public NoBrainEnderman(World world) {
         super(world);
 
-        List goalB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
+        List goalB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
         goalB.clear();
-        List goalC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
+        List goalC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
         goalC.clear();
-        List targetB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
+        List targetB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
         targetB.clear();
-        List targetC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
+        List targetC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
         targetC.clear();
 
         a(0.6F, 2.9F);
@@ -44,7 +44,7 @@ public class NoBrainEnderman extends EntityEnderman implements NoBrainEntity {
         this.targetSelector.a(1, new PathfinderGoalHurtByTarget(this, false, new Class[0]));
 
         // PathfinderGoalPlayerWhoLookedAtTarget
-        final Object pathGoalPlayerWhoLookedAtTarget = NMSUtils.createPrivateInstance(
+        final Object pathGoalPlayerWhoLookedAtTarget = ReflectionsUtils.createPrivateInstance(
                 "net.minecraft.server.v1_8_R1.PathfinderGoalPlayerWhoLookedAtTarget", new Class<?>[] { EntityEnderman.class }, this);
 
         this.targetSelector.a(2, (PathfinderGoalNearestAttackableTarget) pathGoalPlayerWhoLookedAtTarget);

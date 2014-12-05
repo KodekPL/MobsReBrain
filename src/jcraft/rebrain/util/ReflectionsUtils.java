@@ -2,10 +2,11 @@ package jcraft.rebrain.util;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-public class NMSUtils {
+public class ReflectionsUtils {
 
-    public static Object getPrivateField(String fieldName, Class clazz, Object object) {
+    public static Object getPrivateField(String fieldName, Class<?> clazz, Object object) {
         Field field;
         Object o = null;
 
@@ -22,7 +23,7 @@ public class NMSUtils {
         return o;
     }
 
-    public static void setPrivateField(String fieldName, Class clazz, Object classObject, Object classValue) {
+    public static void setPrivateField(String fieldName, Class<?> clazz, Object classObject, Object classValue) {
         try {
             Field field = clazz.getDeclaredField(fieldName);
 
@@ -49,6 +50,19 @@ public class NMSUtils {
         }
 
         return object;
+    }
+
+    public static void invokePrivateMethod(String methodName, Class<?> clazz, Object object) {
+        try {
+            Method method = clazz.getDeclaredMethod(methodName);
+
+            method.setAccessible(true);
+
+            method.invoke(object);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
     }
 
 }

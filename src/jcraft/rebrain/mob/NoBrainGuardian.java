@@ -2,7 +2,7 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
-import jcraft.rebrain.util.NMSUtils;
+import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.ControllerMove;
 import net.minecraft.server.v1_8_R1.EntityGuardian;
 import net.minecraft.server.v1_8_R1.EntityHuman;
@@ -20,13 +20,13 @@ public class NoBrainGuardian extends EntityGuardian implements NoBrainEntity {
     public NoBrainGuardian(World world) {
         super(world);
 
-        List goalB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
+        List goalB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
         goalB.clear();
-        List goalC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
+        List goalC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
         goalC.clear();
-        List targetB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
+        List targetB = (List) ReflectionsUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
         targetB.clear();
-        List targetC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
+        List targetC = (List) ReflectionsUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
         targetC.clear();
 
         a(0.85F, 0.85F);
@@ -34,7 +34,7 @@ public class NoBrainGuardian extends EntityGuardian implements NoBrainEntity {
         this.b_ = 10;
 
         // PathfinderGoalGuardianAttack
-        final Object pathGoalGuardianAttack = NMSUtils.createPrivateInstance("net.minecraft.server.v1_8_R1.PathfinderGoalGuardianAttack",
+        final Object pathGoalGuardianAttack = ReflectionsUtils.createPrivateInstance("net.minecraft.server.v1_8_R1.PathfinderGoalGuardianAttack",
                 new Class<?>[] { EntityGuardian.class }, this);
 
         this.goalSelector.a(4, (PathfinderGoal) pathGoalGuardianAttack);
@@ -45,7 +45,7 @@ public class NoBrainGuardian extends EntityGuardian implements NoBrainEntity {
 
         final PathfinderGoalRandomStroll pathGoalRandomStroll = new PathfinderGoalRandomStroll(this, 1.0D, 80);
 
-        NMSUtils.setPrivateField("bq", EntityGuardian.class, this, pathGoalRandomStroll);
+        ReflectionsUtils.setPrivateField("bq", EntityGuardian.class, this, pathGoalRandomStroll);
 
         this.goalSelector.a(7, pathGoalRandomStroll);
 
@@ -61,15 +61,15 @@ public class NoBrainGuardian extends EntityGuardian implements NoBrainEntity {
         this.targetSelector.a(1, new PathfinderGoalNearestAttackableTarget(this, EntityHuman.class, true));
 
         // ControllerMoveGuardian
-        final Object controllerMoveGuardian = NMSUtils.createPrivateInstance("net.minecraft.server.v1_8_R1.ControllerMoveGuardian",
+        final Object controllerMoveGuardian = ReflectionsUtils.createPrivateInstance("net.minecraft.server.v1_8_R1.ControllerMoveGuardian",
                 new Class<?>[] { EntityGuardian.class }, this);
 
         this.moveController = (ControllerMove) controllerMoveGuardian;
 
         final float randomValue = this.random.nextFloat();
 
-        NMSUtils.setPrivateField("b", EntityGuardian.class, this, randomValue);
-        NMSUtils.setPrivateField("c", EntityGuardian.class, this, randomValue);
+        ReflectionsUtils.setPrivateField("b", EntityGuardian.class, this, randomValue);
+        ReflectionsUtils.setPrivateField("c", EntityGuardian.class, this, randomValue);
     }
 
 }
