@@ -5,6 +5,7 @@ import jcraft.rebrain.ReBrainPlugin;
 
 import org.bukkit.entity.Animals;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Horse;
 import org.bukkit.entity.IronGolem;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Sheep;
@@ -14,6 +15,7 @@ import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class EntityListener implements Listener {
 
@@ -85,6 +87,33 @@ public class EntityListener implements Listener {
             final Sheep newSheep = (Sheep) newEntity;
 
             newSheep.setColor(oldSheep.getColor());
+        }
+
+        if (entity instanceof Horse) {
+            final Horse oldHorse = (Horse) entity;
+            final Horse newHorse = (Horse) newEntity;
+
+            newHorse.setColor(oldHorse.getColor());
+            newHorse.setStyle(oldHorse.getStyle());
+            newHorse.setVariant(oldHorse.getVariant());
+
+            newHorse.setJumpStrength(oldHorse.getJumpStrength());
+            newHorse.setCarryingChest(oldHorse.isCarryingChest());
+
+            newHorse.getInventory().clear();
+
+            final ItemStack[] content = oldHorse.getInventory().getContents();
+
+            for (int i = 0; i < content.length; i++) {
+                ItemStack item = content[i];
+
+                if (item != null) {
+                    newHorse.getInventory().setItem(i, item);
+                }
+            }
+
+            newHorse.setMaxDomestication(oldHorse.getMaxDomestication());
+            newHorse.setDomestication(oldHorse.getDomestication());
         }
 
         if (entity instanceof Zombie) {

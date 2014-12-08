@@ -11,6 +11,7 @@ import jcraft.rebrain.mob.NoBrainEnderman;
 import jcraft.rebrain.mob.NoBrainEndermite;
 import jcraft.rebrain.mob.NoBrainEntity;
 import jcraft.rebrain.mob.NoBrainGuardian;
+import jcraft.rebrain.mob.NoBrainHorse;
 import jcraft.rebrain.mob.NoBrainIronGolem;
 import jcraft.rebrain.mob.NoBrainMushroomCow;
 import jcraft.rebrain.mob.NoBrainPig;
@@ -34,6 +35,7 @@ import net.minecraft.server.v1_8_R1.EntityCreeper;
 import net.minecraft.server.v1_8_R1.EntityEnderman;
 import net.minecraft.server.v1_8_R1.EntityEndermite;
 import net.minecraft.server.v1_8_R1.EntityGuardian;
+import net.minecraft.server.v1_8_R1.EntityHorse;
 import net.minecraft.server.v1_8_R1.EntityInsentient;
 import net.minecraft.server.v1_8_R1.EntityIronGolem;
 import net.minecraft.server.v1_8_R1.EntityMushroomCow;
@@ -64,6 +66,7 @@ public enum NoBrainMobs {
     WOLF("Wolf", 95, NoBrainWolf.class, EntityWolf.class, EntityType.WOLF),
     MUSHROOM_COW("MushroomCow", 96, NoBrainMushroomCow.class, EntityMushroomCow.class, EntityType.MUSHROOM_COW),
     IRON_GOLEM("VillagerGolem", 99, NoBrainIronGolem.class, EntityIronGolem.class, EntityType.IRON_GOLEM),
+    HORSE("EntityHorse", 100, NoBrainHorse.class, EntityHorse.class, EntityType.HORSE),
     VILLAGER("Villager", 120, NoBrainVillager.class, EntityVillager.class, EntityType.VILLAGER),
 
     CREEPER("Creeper", 50, NoBrainCreeper.class, EntityCreeper.class, EntityType.CREEPER),

@@ -14,6 +14,7 @@ public class ReBrainPlugin extends JavaPlugin {
         NoBrainMobs.MUSHROOM_COW.init();
         NoBrainMobs.WOLF.init();
         NoBrainMobs.IRON_GOLEM.init();
+        NoBrainMobs.HORSE.init();
         NoBrainMobs.VILLAGER.init();
 
         NoBrainMobs.CREEPER.init();
