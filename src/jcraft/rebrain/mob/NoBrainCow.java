@@ -2,6 +2,8 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
+import jcraft.rebrain.navigable.CustomSimpleControllerMove;
+import jcraft.rebrain.navigable.CustomSimpleNavigation;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityCow;
 import net.minecraft.server.v1_8_R1.Items;
@@ -28,6 +30,11 @@ public class NoBrainCow extends EntityCow implements NoBrainEntity {
         targetC.clear();
 
         a(0.9F, 1.3F);
+
+        // Apply simple pathfinder
+        this.moveController = new CustomSimpleControllerMove(this);
+        this.navigation = new CustomSimpleNavigation(this, this.world);
+
         ((Navigation) getNavigation()).a(true);
 
         this.goalSelector.a(0, new PathfinderGoalFloat(this));

@@ -31,3 +31,5 @@ What is different:
  * Removed hiding in blocks from silverfish
  * Removed begging from wolf
  * Removed moving through village from zombie
+
+ * Replaced pathfinder AI for simpler in: Cave Spider, Chicken, Cow, Enderman, Endermite, Horse, Mushroom Cow, Pig, Pig Zombie, Sheep, Silverfish, Spider, Zombie

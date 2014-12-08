@@ -2,6 +2,8 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
+import jcraft.rebrain.navigable.CustomSimpleControllerMove;
+import jcraft.rebrain.navigable.CustomSimpleNavigation;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityHorse;
 import net.minecraft.server.v1_8_R1.Navigation;
@@ -27,6 +29,11 @@ public class NoBrainHorse extends EntityHorse implements NoBrainEntity {
         targetC.clear();
 
         a(1.4F, 1.6F);
+
+        // Apply simple pathfinder
+        this.moveController = new CustomSimpleControllerMove(this);
+        this.navigation = new CustomSimpleNavigation(this, this.world);
+
         ((Navigation) getNavigation()).a(true);
 
         this.fireProof = false;

@@ -2,6 +2,8 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
+import jcraft.rebrain.navigable.CustomSimpleControllerMove;
+import jcraft.rebrain.navigable.CustomSimpleNavigation;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityChicken;
 import net.minecraft.server.v1_8_R1.Items;
@@ -27,6 +29,10 @@ public class NoBrainChicken extends EntityChicken implements NoBrainEntity {
         targetC.clear();
 
         a(0.4F, 0.7F);
+
+        // Apply simple pathfinder
+        this.moveController = new CustomSimpleControllerMove(this);
+        this.navigation = new CustomSimpleNavigation(this, this.world);
 
         this.bq = (this.random.nextInt(6000) + 6000);
 

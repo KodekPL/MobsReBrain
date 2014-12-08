@@ -2,6 +2,8 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
+import jcraft.rebrain.navigable.CustomSimpleControllerMove;
+import jcraft.rebrain.navigable.CustomSimpleNavigation;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityEndermite;
 import net.minecraft.server.v1_8_R1.EntityHuman;
@@ -28,6 +30,10 @@ public class NoBrainEndermite extends EntityEndermite implements NoBrainEntity {
         targetC.clear();
 
         a(0.4F, 0.3F);
+
+        // Apply simple pathfinder
+        this.moveController = new CustomSimpleControllerMove(this);
+        this.navigation = new CustomSimpleNavigation(this, this.world);
 
         this.b_ = 3;
 

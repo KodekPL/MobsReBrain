@@ -2,6 +2,9 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
+import jcraft.rebrain.ai.CustomPathfinderGoalTempt;
+import jcraft.rebrain.navigable.CustomSimpleControllerMove;
+import jcraft.rebrain.navigable.CustomSimpleNavigation;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityPig;
 import net.minecraft.server.v1_8_R1.Items;
@@ -11,7 +14,6 @@ import net.minecraft.server.v1_8_R1.PathfinderGoalFloat;
 import net.minecraft.server.v1_8_R1.PathfinderGoalPassengerCarrotStick;
 import net.minecraft.server.v1_8_R1.PathfinderGoalRandomLookaround;
 import net.minecraft.server.v1_8_R1.PathfinderGoalSelector;
-import net.minecraft.server.v1_8_R1.PathfinderGoalTempt;
 import net.minecraft.server.v1_8_R1.World;
 
 public class NoBrainPig extends EntityPig implements NoBrainEntity {
@@ -29,6 +31,11 @@ public class NoBrainPig extends EntityPig implements NoBrainEntity {
         targetC.clear();
 
         a(0.9F, 0.9F);
+
+        // Apply simple pathfinder
+        this.moveController = new CustomSimpleControllerMove(this);
+        this.navigation = new CustomSimpleNavigation(this, this.world);
+
         ((Navigation) getNavigation()).a(true);
 
         this.goalSelector.a(0, new PathfinderGoalFloat(this));
@@ -45,7 +52,7 @@ public class NoBrainPig extends EntityPig implements NoBrainEntity {
 
         // this.goalSelector.a(4, new PathfinderGoalTempt(this, 1.2D, Items.CARROT_ON_A_STICK, false));
 
-        this.goalSelector.a(4, new PathfinderGoalTempt(this, 1.2D, Items.CARROT, false));
+        this.goalSelector.a(4, new CustomPathfinderGoalTempt(this, 1.2D, Items.CARROT, false));
 
         // this.goalSelector.a(5, new PathfinderGoalFollowParent(this, 1.1D));
         // this.goalSelector.a(6, new PathfinderGoalRandomStroll(this, 1.0D));

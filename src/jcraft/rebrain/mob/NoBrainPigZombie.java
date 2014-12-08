@@ -2,6 +2,8 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
+import jcraft.rebrain.navigable.CustomSimpleControllerMove;
+import jcraft.rebrain.navigable.CustomSimpleNavigation;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityHuman;
 import net.minecraft.server.v1_8_R1.EntityPigZombie;
@@ -28,6 +30,11 @@ public class NoBrainPigZombie extends EntityPigZombie implements NoBrainEntity {
         targetC.clear();
 
         a(0.6F, 1.95F);
+
+        // Apply simple pathfinder
+        this.moveController = new CustomSimpleControllerMove(this);
+        this.navigation = new CustomSimpleNavigation(this, this.world);
+
         ((Navigation) getNavigation()).b(true);
 
         this.fireProof = true;
