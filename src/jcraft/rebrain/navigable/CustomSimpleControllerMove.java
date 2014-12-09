@@ -42,7 +42,7 @@ public class CustomSimpleControllerMove extends ControllerMove {
                 double plainDiff = xDiff * xDiff + zDiff * zDiff;
                 double testDiff = lastDiff - plainDiff;
 
-                if (((yDiff > 0.0D) && (plainDiff < 1.0D)) || (testDiff > 0.0D && testDiff < 0.1D)) {
+                if (((yDiff > 0.0D) && (plainDiff < 1.0D)) || (testDiff >= 0.0D && testDiff < 0.1D)) {
                     this.a.getControllerJump().a();
                 }
 
