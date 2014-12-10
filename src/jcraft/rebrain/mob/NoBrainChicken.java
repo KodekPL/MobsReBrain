@@ -50,4 +50,33 @@ public class NoBrainChicken extends EntityChicken implements NoBrainEntity {
         this.goalSelector.a(7, new PathfinderGoalRandomLookaround(this));
     }
 
+    @Override
+    public void inactiveTick() {
+        super.inactiveTick();
+
+        if ((this.world.isStatic) || (this.ageLocked)) {
+            a(isBaby());
+        } else {
+            int i = getAge();
+
+            if (i < 0) {
+                i++;
+                setAgeRaw(i);
+            } else if (i > 0) {
+                i--;
+                setAgeRaw(i);
+            }
+        }
+
+        tickEggDrop();
+    }
+
+    private void tickEggDrop() {
+        if ((!this.world.isStatic) && (!isBaby()) && (!isChickenJockey()) && (--this.bq <= 0)) {
+            makeSound("mob.chicken.plop", 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+            a(Items.EGG, 1);
+            this.bq = (this.random.nextInt(6000) + 6000);
+        }
+    }
+
 }
