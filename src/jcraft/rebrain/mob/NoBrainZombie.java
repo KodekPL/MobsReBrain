@@ -6,7 +6,6 @@ import jcraft.rebrain.navigable.CustomSimpleControllerMove;
 import jcraft.rebrain.navigable.CustomSimpleNavigation;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityHuman;
-import net.minecraft.server.v1_8_R1.EntityIronGolem;
 import net.minecraft.server.v1_8_R1.EntityPigZombie;
 import net.minecraft.server.v1_8_R1.EntityZombie;
 import net.minecraft.server.v1_8_R1.Navigation;
@@ -59,7 +58,7 @@ public class NoBrainZombie extends EntityZombie implements NoBrainEntity {
         // this.goalSelector.a(4, new PathfinderGoalMeleeAttack(this, EntityVillager.class, 1.0D, true));
         // }
 
-        this.goalSelector.a(5, new PathfinderGoalMeleeAttack(this, EntityIronGolem.class, 1.0D, true));
+        // this.goalSelector.a(5, new PathfinderGoalMeleeAttack(this, EntityIronGolem.class, 1.0D, true));
 
         // this.goalSelector.a(6, new PathfinderGoalMoveThroughVillage(this, 1.0D, false));
 
