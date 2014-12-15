@@ -35,3 +35,4 @@ What is different:
  * Replaced pathfinder AI for simpler in: Cave Spider, Chicken, Cow, Enderman, Endermite, Horse, Mushroom Cow, Pig, Pig Zombie, Sheep, Silverfish, Spider, Zombie
  
  * Changed Chicken to drop eggs even if inactive
+ * Changed Sheep to eat blocks even if inactive
