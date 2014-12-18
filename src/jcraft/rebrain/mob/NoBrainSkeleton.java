@@ -30,7 +30,9 @@ public class NoBrainSkeleton extends EntitySkeleton implements NoBrainEntity {
 
         this.goalSelector.a(1, new PathfinderGoalFloat(this));
         this.goalSelector.a(2, new PathfinderGoalRestrictSun(this));
-        this.goalSelector.a(2, this.a);
+
+        // this.goalSelector.a(2, this.a);
+
         this.goalSelector.a(3, new PathfinderGoalFleeSun(this, 1.0D));
 
         // this.goalSelector.a(3, new PathfinderGoalAvoidTarget(this, new EntitySelectorSkeletonWolf(this), 6.0F, 1.0D, 1.2D));
