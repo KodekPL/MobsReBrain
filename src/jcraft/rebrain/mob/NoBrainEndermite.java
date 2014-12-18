@@ -39,8 +39,10 @@ public class NoBrainEndermite extends EntityEndermite implements NoBrainEntity {
 
         this.goalSelector.a(1, new PathfinderGoalFloat(this));
         this.goalSelector.a(2, new PathfinderGoalMeleeAttack(this, EntityHuman.class, 1.0D, false));
+
         // this.goalSelector.a(3, new PathfinderGoalRandomStroll(this, 1.0D));
         // this.goalSelector.a(7, new PathfinderGoalLookAtPlayer(this, EntityHuman.class, 8.0F));
+
         this.goalSelector.a(8, new PathfinderGoalRandomLookaround(this));
 
         this.targetSelector.a(1, new PathfinderGoalHurtByTarget(this, true, new Class[0]));

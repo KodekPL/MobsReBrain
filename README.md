@@ -19,7 +19,7 @@ What is different:
  * Removed avoiding of cats from creeper
  * Removed avoiding of wolfs from skeleton
  * Removed avoiding of zombies from villager
- * Removed avoiding of exploding creepers from skeleton
+ * Removed avoiding of exploding creepers from: CaveSpider, Creeper, Endermite, Pig Zombie, Skeleton, Spider, Witch, Zombie
 
  * Removed offering of flowers from iron golem
  * Removed taking of flower from villager

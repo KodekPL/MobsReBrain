@@ -33,9 +33,7 @@ public class NoBrainWitch extends EntityWitch implements NoBrainEntity {
         this.goalSelector.a(2, new PathfinderGoalArrowAttack(this, 1.0D, 60, 10.0F));
 
         // this.goalSelector.a(2, new PathfinderGoalRandomStroll(this, 1.0D));
-
-        this.goalSelector.a(2, this.a);
-
+        // this.goalSelector.a(2, this.a);
         // this.goalSelector.a(3, new PathfinderGoalLookAtPlayer(this, EntityHuman.class, 8.0F));
 
         this.goalSelector.a(3, new PathfinderGoalRandomLookaround(this));

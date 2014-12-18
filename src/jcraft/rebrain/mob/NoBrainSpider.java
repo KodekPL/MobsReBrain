@@ -37,7 +37,9 @@ public class NoBrainSpider extends EntitySpider implements NoBrainEntity {
         this.navigation = new CustomSimpleNavigation(this, this.world);
 
         this.goalSelector.a(1, new PathfinderGoalFloat(this));
-        this.goalSelector.a(2, this.a);
+
+        // this.goalSelector.a(2, this.a);
+
         this.goalSelector.a(3, new PathfinderGoalLeapAtTarget(this, 0.4F));
 
         // PathfinderGoalSpiderMeleeAttack
