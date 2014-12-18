@@ -35,5 +35,8 @@ What is different:
 
  * Replaced pathfinder AI for simpler in: Cave Spider, Chicken, Cow, Enderman, Endermite, Horse, Mushroom Cow, Pig, Pig Zombie, Sheep, Silverfish, Spider, Zombie
  
+ * Changed melee attack speed of Zombie from 1.0 to 1.25
+ * Changed melee attack speed of Pig Zombie from 1.0 to 1.3
+ 
  * Changed Chicken to drop eggs even if inactive
  * Changed Sheep to eat blocks even if inactive

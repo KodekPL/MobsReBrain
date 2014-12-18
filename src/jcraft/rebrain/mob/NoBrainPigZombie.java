@@ -40,7 +40,7 @@ public class NoBrainPigZombie extends EntityPigZombie implements NoBrainEntity {
         this.fireProof = true;
 
         this.goalSelector.a(0, new PathfinderGoalFloat(this));
-        this.goalSelector.a(2, new PathfinderGoalMeleeAttack(this, EntityHuman.class, 1.0D, false));
+        this.goalSelector.a(2, new PathfinderGoalMeleeAttack(this, EntityHuman.class, 1.3D, false)); // 1.0D -> 1.3D
 
         // this.goalSelector.a(2, this.a);
 
