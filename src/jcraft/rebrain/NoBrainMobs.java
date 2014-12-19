@@ -111,7 +111,7 @@ public enum NoBrainMobs {
     public Object getInstance(World world) {
         try {
             if (this.getType() == EntityType.VILLAGER) {
-                return this.customClass.getConstructors()[0].newInstance(world, world.random.nextInt(5));
+                return this.customClass.getConstructors()[1].newInstance(world, world.random.nextInt(5));
             } else {
                 return this.customClass.getConstructors()[0].newInstance(world);
             }

@@ -3,7 +3,7 @@ package jcraft.rebrain.listener;
 import jcraft.rebrain.NoBrainMobs;
 import jcraft.rebrain.ReBrainPlugin;
 
-import org.bukkit.entity.Animals;
+import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.IronGolem;
@@ -58,18 +58,18 @@ public class EntityListener implements Listener {
 
         final Entity newEntity = NoBrainMobs.convertToBukkit(NoBrainMobs.spawnEntity(noBrainMob, entity.getLocation()));
 
-        if (entity instanceof Animals) {
-            final Animals oldAnimal = (Animals) entity;
-            final Animals newAnimal = (Animals) newEntity;
+        if (entity instanceof Ageable) {
+            final Ageable oldAgeable = (Ageable) entity;
+            final Ageable newAgeable = (Ageable) newEntity;
 
-            if (oldAnimal.isAdult()) {
-                newAnimal.setAdult();
+            if (oldAgeable.isAdult()) {
+                newAgeable.setAdult();
             } else {
-                newAnimal.setBaby();
+                newAgeable.setBaby();
             }
 
-            newAnimal.setAge(oldAnimal.getAge());
-            newAnimal.setBreed(oldAnimal.canBreed());
+            newAgeable.setAge(oldAgeable.getAge());
+            newAgeable.setBreed(oldAgeable.canBreed());
         }
 
         if (entity instanceof Tameable) {
