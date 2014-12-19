@@ -5,12 +5,9 @@ import java.util.List;
 import jcraft.rebrain.navigable.CustomSimpleControllerMove;
 import jcraft.rebrain.navigable.CustomSimpleNavigation;
 import jcraft.rebrain.util.ReflectionsUtils;
-import net.minecraft.server.v1_8_R1.DifficultyDamageScaler;
-import net.minecraft.server.v1_8_R1.EntityChicken;
 import net.minecraft.server.v1_8_R1.EntityHuman;
 import net.minecraft.server.v1_8_R1.EntityPigZombie;
 import net.minecraft.server.v1_8_R1.EntityZombie;
-import net.minecraft.server.v1_8_R1.GroupDataEntity;
 import net.minecraft.server.v1_8_R1.Navigation;
 import net.minecraft.server.v1_8_R1.PathfinderGoalFloat;
 import net.minecraft.server.v1_8_R1.PathfinderGoalHurtByTarget;
@@ -76,18 +73,6 @@ public class NoBrainZombie extends EntityZombie implements NoBrainEntity {
         // }
 
         // this.targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityIronGolem.class, true));
-    }
-
-    @Override
-    public GroupDataEntity prepare(DifficultyDamageScaler difficultydamagescaler, GroupDataEntity groupdataentity) {
-        final Object object = super.prepare(difficultydamagescaler, groupdataentity);
-
-        if (this.isBaby() && this.vehicle != null && this.vehicle instanceof EntityChicken) {
-            // TODO: Override prepare method to avoid spawning of chickens at all
-            this.world.removeEntity(this.vehicle);
-        }
-
-        return (GroupDataEntity) object;
     }
 
 }
