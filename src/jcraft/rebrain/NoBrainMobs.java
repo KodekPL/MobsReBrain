@@ -1,5 +1,6 @@
 package jcraft.rebrain;
 
+import java.lang.reflect.Constructor;
 import java.util.Map;
 
 import jcraft.rebrain.mob.NoBrainBlaze;
@@ -110,10 +111,10 @@ public enum NoBrainMobs {
 
     public Object getInstance(World world) {
         try {
-            if (this.getType() == EntityType.VILLAGER) {
-                return this.customClass.getConstructors()[1].newInstance(world, world.random.nextInt(5));
-            } else {
-                return this.customClass.getConstructors()[0].newInstance(world);
+            for (Constructor<?> constructor : this.customClass.getConstructors()) {
+                if (constructor.getModifiers() == 1) {
+                    return constructor.newInstance(world);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

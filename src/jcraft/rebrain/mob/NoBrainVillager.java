@@ -28,7 +28,7 @@ import org.bukkit.craftbukkit.v1_8_R1.entity.CraftVillager;
 public class NoBrainVillager extends EntityVillager implements NoBrainEntity {
 
     public NoBrainVillager(World world) {
-        super(world, world.random.nextInt(5));
+        this(world, world.random.nextInt(5));
     }
 
     public NoBrainVillager(World world, int i) {
