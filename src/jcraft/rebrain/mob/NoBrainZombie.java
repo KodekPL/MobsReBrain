@@ -1,13 +1,20 @@
 package jcraft.rebrain.mob;
 
+import java.util.Calendar;
 import java.util.List;
 
 import jcraft.rebrain.navigable.CustomSimpleControllerMove;
 import jcraft.rebrain.navigable.CustomSimpleNavigation;
 import jcraft.rebrain.util.ReflectionsUtils;
+import net.minecraft.server.v1_8_R1.AttributeModifier;
+import net.minecraft.server.v1_8_R1.Blocks;
+import net.minecraft.server.v1_8_R1.DifficultyDamageScaler;
 import net.minecraft.server.v1_8_R1.EntityHuman;
 import net.minecraft.server.v1_8_R1.EntityPigZombie;
 import net.minecraft.server.v1_8_R1.EntityZombie;
+import net.minecraft.server.v1_8_R1.GenericAttributes;
+import net.minecraft.server.v1_8_R1.GroupDataEntity;
+import net.minecraft.server.v1_8_R1.ItemStack;
 import net.minecraft.server.v1_8_R1.Navigation;
 import net.minecraft.server.v1_8_R1.PathfinderGoalFloat;
 import net.minecraft.server.v1_8_R1.PathfinderGoalHurtByTarget;
@@ -73,6 +80,46 @@ public class NoBrainZombie extends EntityZombie implements NoBrainEntity {
         // }
 
         // this.targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityIronGolem.class, true));
+    }
+
+    @Override
+    public GroupDataEntity prepare(DifficultyDamageScaler difficultydamagescaler, GroupDataEntity groupdataentity) {
+        float f = difficultydamagescaler.c();
+
+        j(this.random.nextFloat() < 0.55F * f);
+
+        setVillager(this.world.random.nextFloat() < 0.05F);
+        setBaby(this.world.random.nextFloat() < 0.05F);
+
+        a(this.random.nextFloat() < f * 0.1F);
+        a(difficultydamagescaler);
+        b(difficultydamagescaler);
+
+        if (getEquipment(4) == null) {
+            Calendar calendar = this.world.Y();
+
+            if ((calendar.get(2) + 1 == 10) && (calendar.get(5) == 31) && (this.random.nextFloat() < 0.25F)) {
+                setEquipment(4, new ItemStack(this.random.nextFloat() < 0.1F ? Blocks.LIT_PUMPKIN : Blocks.PUMPKIN));
+                this.dropChances[4] = 0.0F;
+            }
+        }
+
+        getAttributeInstance(GenericAttributes.c).b(new AttributeModifier("Random spawn bonus", this.random.nextDouble() * 0.0500000007450581D, 0));
+
+        double d0 = this.random.nextDouble() * 1.5D * f;
+
+        if (d0 > 1.0D) {
+            getAttributeInstance(GenericAttributes.b).b(new AttributeModifier("Random zombie-spawn bonus", d0, 2));
+        }
+
+        if (this.random.nextFloat() < f * 0.05F) {
+            getAttributeInstance(b).b(new AttributeModifier("Leader zombie bonus", this.random.nextDouble() * 0.25D + 0.5D, 0));
+            getAttributeInstance(GenericAttributes.maxHealth).b(
+                    new AttributeModifier("Leader zombie bonus", this.random.nextDouble() * 3.0D + 1.0D, 2));
+            a(true);
+        }
+
+        return groupdataentity;
     }
 
 }
