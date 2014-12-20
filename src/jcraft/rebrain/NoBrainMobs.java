@@ -110,6 +110,10 @@ public enum NoBrainMobs {
     }
 
     public Object getInstance(World world) {
+        if (this.getType() == EntityType.VILLAGER) {
+            return new NoBrainVillager(world);
+        }
+
         try {
             for (Constructor<?> constructor : this.customClass.getConstructors()) {
                 if (constructor.getModifiers() == 1) {
@@ -155,6 +159,10 @@ public enum NoBrainMobs {
     public static Entity spawnEntity(NoBrainMobs noBrainMob, Location loc) {
         final World nmsWorld = ((CraftWorld) loc.getWorld()).getHandle();
         final Entity entity = (Entity) noBrainMob.getInstance(nmsWorld);
+
+        if (entity == null) {
+            throw new NullPointerException("Instance of NoBrainMob entity type not found: " + noBrainMob.getName());
+        }
 
         entity.setLocation(loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(), loc.getPitch());
 
