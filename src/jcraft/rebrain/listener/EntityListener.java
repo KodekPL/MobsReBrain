@@ -4,6 +4,7 @@ import jcraft.rebrain.NoBrainMobs;
 import jcraft.rebrain.ReBrainPlugin;
 
 import org.bukkit.entity.Ageable;
+import org.bukkit.entity.Chicken;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.IronGolem;
@@ -15,6 +16,7 @@ import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import org.bukkit.inventory.ItemStack;
 
 public class EntityListener implements Listener {
@@ -42,14 +44,14 @@ public class EntityListener implements Listener {
         case SILVERFISH_BLOCK:
         case VILLAGE_DEFENSE:
         case VILLAGE_INVASION:
-            spawnEntity(event.getEntity());
+            spawnEntity(event.getEntity(), event.getSpawnReason());
             return;
         default:
             return;
         }
     }
 
-    public void spawnEntity(final LivingEntity entity) {
+    public void spawnEntity(final LivingEntity entity, final SpawnReason reason) {
         final NoBrainMobs noBrainMob = NoBrainMobs.getNoBrainMob(entity.getType());
 
         if (noBrainMob == null) {
@@ -87,6 +89,15 @@ public class EntityListener implements Listener {
             final Sheep newSheep = (Sheep) newEntity;
 
             newSheep.setColor(oldSheep.getColor());
+        }
+
+        if (entity instanceof Chicken) {
+            final Chicken chicken = (Chicken) newEntity;
+
+            if (reason == SpawnReason.EGG) {
+                chicken.setBaby();
+                chicken.setAge(-24000);
+            }
         }
 
         if (entity instanceof Horse) {
