@@ -54,21 +54,7 @@ public class NoBrainChicken extends EntityChicken implements NoBrainEntity {
     public void inactiveTick() {
         super.inactiveTick();
 
-        if ((this.world.isStatic) || (this.ageLocked)) {
-            a(isBaby());
-        } else {
-            int i = getAge();
-
-            if (i < 0) {
-                i++;
-                setAgeRaw(i);
-            } else if (i > 0) {
-                i--;
-                setAgeRaw(i);
-            }
-        }
-
-        tickEggDrop();
+        this.tickEggDrop();
     }
 
     private void tickEggDrop() {
