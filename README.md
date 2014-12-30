@@ -5,7 +5,7 @@ Works only with Spigot (MC 1.8-R0.1).
 
 What is different:
  * Removed random stroll from: Blaze, Cave Spider, Chicken, Cow, Creeper, Enderman, Endermite, Horse, Iron Golem, Mushroom Cow, Pig, Pig Zombie, Sheep, Skeleton, Spider, Witch, Wolf, Zombie
- * Removed looking at player from: Blaze, Cave Spider, Chicken, Cow, Creeper, Enderman, Endermite, Horse, Iron Golem, Mushroom Cow, Pig, Pig Zombie, Sheep, Skeleton, Spider, Witch, Wolf, Zombie
+ * Removed looking at player from: Blaze, Cave Spider, Creeper, Enderman, Endermite, Pig Zombie, Skeleton, Spider, Witch, Wolf, Zombie
  * Removed attacking of iron golem from: Cave Spider, Skeleton, Spider, Zombie
  * Removed following of parent from: Chicken, Cow, Horse, Mushroom Cow, Pig, Sheep
  * Removed panic run from: Chicken, Cow, Horse, Mushroom Cow, Pig, Sheep

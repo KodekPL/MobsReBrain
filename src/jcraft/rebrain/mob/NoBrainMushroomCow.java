@@ -15,6 +15,7 @@ import net.minecraft.server.v1_8_R1.Items;
 import net.minecraft.server.v1_8_R1.Navigation;
 import net.minecraft.server.v1_8_R1.PathfinderGoalBreed;
 import net.minecraft.server.v1_8_R1.PathfinderGoalFloat;
+import net.minecraft.server.v1_8_R1.PathfinderGoalLookAtPlayer;
 import net.minecraft.server.v1_8_R1.PathfinderGoalRandomLookaround;
 import net.minecraft.server.v1_8_R1.PathfinderGoalSelector;
 import net.minecraft.server.v1_8_R1.PathfinderGoalTempt;
@@ -56,8 +57,8 @@ public class NoBrainMushroomCow extends EntityMushroomCow implements NoBrainEnti
 
         // this.goalSelector.a(4, new PathfinderGoalFollowParent(this, 1.25D));
         // this.goalSelector.a(5, new PathfinderGoalRandomStroll(this, 1.0D));
-        // this.goalSelector.a(6, new PathfinderGoalLookAtPlayer(this, EntityHuman.class, 6.0F));
 
+        this.goalSelector.a(6, new PathfinderGoalLookAtPlayer(this, EntityHuman.class, 6.0F));
         this.goalSelector.a(7, new PathfinderGoalRandomLookaround(this));
     }
 

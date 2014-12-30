@@ -10,6 +10,7 @@ import net.minecraft.server.v1_8_R1.EntitySpider;
 import net.minecraft.server.v1_8_R1.PathfinderGoalFloat;
 import net.minecraft.server.v1_8_R1.PathfinderGoalHurtByTarget;
 import net.minecraft.server.v1_8_R1.PathfinderGoalLeapAtTarget;
+import net.minecraft.server.v1_8_R1.PathfinderGoalLookAtPlayer;
 import net.minecraft.server.v1_8_R1.PathfinderGoalMeleeAttack;
 import net.minecraft.server.v1_8_R1.PathfinderGoalNearestAttackableTarget;
 import net.minecraft.server.v1_8_R1.PathfinderGoalRandomLookaround;
@@ -51,8 +52,8 @@ public class NoBrainSpider extends EntitySpider implements NoBrainEntity {
 
         // this.goalSelector.a(4, new PathfinderGoalSpiderMeleeAttack(this, EntityIronGolem.class));
         // this.goalSelector.a(5, new PathfinderGoalRandomStroll(this, 0.8D));
-        // this.goalSelector.a(6, new PathfinderGoalLookAtPlayer(this, EntityHuman.class, 8.0F));
 
+        this.goalSelector.a(6, new PathfinderGoalLookAtPlayer(this, EntityHuman.class, 8.0F));
         this.goalSelector.a(6, new PathfinderGoalRandomLookaround(this));
 
         this.targetSelector.a(1, new PathfinderGoalHurtByTarget(this, false, new Class[0]));

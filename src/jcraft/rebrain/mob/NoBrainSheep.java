@@ -10,6 +10,7 @@ import net.minecraft.server.v1_8_R1.BlockLongGrass;
 import net.minecraft.server.v1_8_R1.BlockPosition;
 import net.minecraft.server.v1_8_R1.BlockStatePredicate;
 import net.minecraft.server.v1_8_R1.Blocks;
+import net.minecraft.server.v1_8_R1.EntityHuman;
 import net.minecraft.server.v1_8_R1.EntitySheep;
 import net.minecraft.server.v1_8_R1.EnumTallGrassType;
 import net.minecraft.server.v1_8_R1.InventoryCraftResult;
@@ -19,6 +20,7 @@ import net.minecraft.server.v1_8_R1.Items;
 import net.minecraft.server.v1_8_R1.Navigation;
 import net.minecraft.server.v1_8_R1.PathfinderGoalBreed;
 import net.minecraft.server.v1_8_R1.PathfinderGoalFloat;
+import net.minecraft.server.v1_8_R1.PathfinderGoalLookAtPlayer;
 import net.minecraft.server.v1_8_R1.PathfinderGoalRandomLookaround;
 import net.minecraft.server.v1_8_R1.PathfinderGoalSelector;
 import net.minecraft.server.v1_8_R1.PathfinderGoalTempt;
@@ -68,8 +70,8 @@ public class NoBrainSheep extends EntitySheep implements NoBrainEntity {
         // this.goalSelector.a(5, this.bo);
 
         // this.goalSelector.a(6, new PathfinderGoalRandomStroll(this, 1.0D));
-        // this.goalSelector.a(7, new PathfinderGoalLookAtPlayer(this, EntityHuman.class, 6.0F));
 
+        this.goalSelector.a(7, new PathfinderGoalLookAtPlayer(this, EntityHuman.class, 6.0F));
         this.goalSelector.a(8, new PathfinderGoalRandomLookaround(this));
 
         // InventoryCrafting

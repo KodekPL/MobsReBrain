@@ -4,12 +4,14 @@ import java.util.List;
 
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityCreature;
+import net.minecraft.server.v1_8_R1.EntityHuman;
 import net.minecraft.server.v1_8_R1.EntityInsentient;
 import net.minecraft.server.v1_8_R1.EntityIronGolem;
 import net.minecraft.server.v1_8_R1.IMonster;
 import net.minecraft.server.v1_8_R1.Navigation;
 import net.minecraft.server.v1_8_R1.PathfinderGoalDefendVillage;
 import net.minecraft.server.v1_8_R1.PathfinderGoalHurtByTarget;
+import net.minecraft.server.v1_8_R1.PathfinderGoalLookAtPlayer;
 import net.minecraft.server.v1_8_R1.PathfinderGoalMeleeAttack;
 import net.minecraft.server.v1_8_R1.PathfinderGoalMoveThroughVillage;
 import net.minecraft.server.v1_8_R1.PathfinderGoalMoveTowardsRestriction;
@@ -45,8 +47,8 @@ public class NoBrainIronGolem extends EntityIronGolem implements NoBrainEntity {
 
         // this.goalSelector.a(5, new PathfinderGoalOfferFlower(this));
         // this.goalSelector.a(6, new PathfinderGoalRandomStroll(this, 0.6D));
-        // this.goalSelector.a(7, new PathfinderGoalLookAtPlayer(this, EntityHuman.class, 6.0F));
 
+        this.goalSelector.a(7, new PathfinderGoalLookAtPlayer(this, EntityHuman.class, 6.0F));
         this.goalSelector.a(8, new PathfinderGoalRandomLookaround(this));
 
         this.targetSelector.a(1, new PathfinderGoalDefendVillage(this));
