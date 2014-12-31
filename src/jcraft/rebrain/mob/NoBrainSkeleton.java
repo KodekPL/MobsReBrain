@@ -2,6 +2,7 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
+import jcraft.rebrain.util.EntityCollisionHandler;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityHuman;
 import net.minecraft.server.v1_8_R1.EntitySkeleton;
@@ -49,6 +50,19 @@ public class NoBrainSkeleton extends EntitySkeleton implements NoBrainEntity {
         if ((world != null) && (!world.isStatic)) {
             n();
         }
+    }
+
+    int collisionCooldown = 5;
+
+    @Override
+    protected void bK() {
+        if (collisionCooldown-- > 0) {
+            return;
+        }
+
+        collisionCooldown = 5;
+
+        EntityCollisionHandler.collide(this);
     }
 
 }

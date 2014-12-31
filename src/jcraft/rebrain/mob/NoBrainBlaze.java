@@ -2,6 +2,7 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
+import jcraft.rebrain.util.EntityCollisionHandler;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityBlaze;
 import net.minecraft.server.v1_8_R1.EntityHuman;
@@ -44,6 +45,19 @@ public class NoBrainBlaze extends EntityBlaze implements NoBrainEntity {
 
         this.targetSelector.a(1, new PathfinderGoalHurtByTarget(this, true, new Class[0]));
         this.targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityHuman.class, true));
+    }
+
+    int collisionCooldown = 5;
+
+    @Override
+    protected void bK() {
+        if (collisionCooldown-- > 0) {
+            return;
+        }
+
+        collisionCooldown = 5;
+
+        EntityCollisionHandler.collide(this);
     }
 
 }

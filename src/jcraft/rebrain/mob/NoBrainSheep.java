@@ -4,6 +4,7 @@ import java.util.List;
 
 import jcraft.rebrain.navigable.CustomSimpleControllerMove;
 import jcraft.rebrain.navigable.CustomSimpleNavigation;
+import jcraft.rebrain.util.EntityCollisionHandler;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.Block;
 import net.minecraft.server.v1_8_R1.BlockLongGrass;
@@ -153,6 +154,19 @@ public class NoBrainSheep extends EntitySheep implements NoBrainEntity {
 
             this.eatDelayTicks = (this.random.nextInt(1200) + 1200);
         }
+    }
+
+    int collisionCooldown = 5;
+
+    @Override
+    protected void bK() {
+        if (collisionCooldown-- > 0) {
+            return;
+        }
+
+        collisionCooldown = 5;
+
+        EntityCollisionHandler.collide(this);
     }
 
 }

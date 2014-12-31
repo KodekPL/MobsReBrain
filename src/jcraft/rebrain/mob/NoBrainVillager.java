@@ -2,6 +2,7 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
+import jcraft.rebrain.util.EntityCollisionHandler;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityHuman;
 import net.minecraft.server.v1_8_R1.EntityInsentient;
@@ -81,6 +82,19 @@ public class NoBrainVillager extends EntityVillager implements NoBrainEntity {
 
     public void initCareer() {
         ReflectionsUtils.invokePrivateMethod("cu", EntityVillager.class, this);
+    }
+
+    int collisionCooldown = 5;
+
+    @Override
+    protected void bK() {
+        if (collisionCooldown-- > 0) {
+            return;
+        }
+
+        collisionCooldown = 5;
+
+        EntityCollisionHandler.collide(this);
     }
 
 }

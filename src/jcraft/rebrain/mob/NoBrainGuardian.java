@@ -2,6 +2,7 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
+import jcraft.rebrain.util.EntityCollisionHandler;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.ControllerMove;
 import net.minecraft.server.v1_8_R1.EntityGuardian;
@@ -70,6 +71,19 @@ public class NoBrainGuardian extends EntityGuardian implements NoBrainEntity {
 
         ReflectionsUtils.setPrivateField("b", EntityGuardian.class, this, randomValue);
         ReflectionsUtils.setPrivateField("c", EntityGuardian.class, this, randomValue);
+    }
+
+    int collisionCooldown = 5;
+
+    @Override
+    protected void bK() {
+        if (collisionCooldown-- > 0) {
+            return;
+        }
+
+        collisionCooldown = 5;
+
+        EntityCollisionHandler.collide(this);
     }
 
 }
