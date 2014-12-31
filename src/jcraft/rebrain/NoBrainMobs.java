@@ -57,6 +57,7 @@ import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_8_R1.entity.CraftEntity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.event.entity.CreatureSpawnEvent;
 
 public enum NoBrainMobs {
 
@@ -157,6 +158,10 @@ public enum NoBrainMobs {
     }
 
     public static Entity spawnEntity(NoBrainMobs noBrainMob, Location loc) {
+        return spawnEntity(noBrainMob, loc, CreatureSpawnEvent.SpawnReason.DEFAULT);
+    }
+
+    public static Entity spawnEntity(NoBrainMobs noBrainMob, Location loc, CreatureSpawnEvent.SpawnReason spawnReason) {
         final World nmsWorld = ((CraftWorld) loc.getWorld()).getHandle();
         final Entity entity = (Entity) noBrainMob.getInstance(nmsWorld);
 
@@ -168,7 +173,7 @@ public enum NoBrainMobs {
 
         ((EntityInsentient) entity).prepare(entity.world.E(new BlockPosition(entity)), (GroupDataEntity) null);
 
-        nmsWorld.addEntity(entity);
+        nmsWorld.addEntity(entity, spawnReason);
 
         return entity;
     }
