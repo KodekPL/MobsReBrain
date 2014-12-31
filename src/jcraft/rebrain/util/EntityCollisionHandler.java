@@ -10,21 +10,23 @@ public class EntityCollisionHandler {
     public static void collide(EntityLiving cEntity) {
         int collisionsLimiter = 4;
 
-        final List list = cEntity.world.getEntities(cEntity, cEntity.getBoundingBox().grow(0.2000000029802322D, 0.0D, 0.2000000029802322D));
+        if (cEntity.isAlive()) {
+            final List list = cEntity.world.getEntities(cEntity, cEntity.getBoundingBox().grow(0.2000000029802322D, 0.0D, 0.2000000029802322D));
 
-        if (cEntity.isAlive() && list != null && !list.isEmpty()) {
-            for (int i = 0; i < list.size(); i++) {
-                if (collisionsLimiter < 0) {
-                    return;
-                }
+            if (list != null && !list.isEmpty()) {
+                for (int i = 0; i < list.size(); i++) {
+                    if (collisionsLimiter < 0) {
+                        return;
+                    }
 
-                Entity entity = (Entity) list.get(i);
+                    Entity entity = (Entity) list.get(i);
 
-                if (!(entity instanceof EntityLiving) || cEntity.ticksLived % 2 != 0) {
-                    if (entity.ae()) {
-                        cEntity.collide(entity);
+                    if (!(entity instanceof EntityLiving) || cEntity.ticksLived % 2 != 0) {
+                        if (entity.ae()) {
+                            cEntity.collide(entity);
 
-                        collisionsLimiter--;
+                            collisionsLimiter--;
+                        }
                     }
                 }
             }
