@@ -33,8 +33,6 @@ What is different:
  * Removed begging from wolf
  * Removed moving through village from zombie
  
- * Removed chicken jockey spawning from Zombie
- 
  * Slowed down entity collisions for: Blaze, Cave Spider, Chicken, Cow, Creeper, Enderman, Endermite, Horse, Iron Golem, Mushroom Cow, Pig, Pig Zombie, Sheep, Skeleton, Spider, Witch, Wolf, Zombie
 
  * Replaced pathfinder AI for simpler in: Cave Spider, Chicken, Cow, Enderman, Endermite, Horse, Mushroom Cow, Pig, Pig Zombie, Sheep, Silverfish, Spider, Zombie
