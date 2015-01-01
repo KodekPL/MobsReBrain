@@ -55,7 +55,7 @@ public class ReBrainPlugin extends JavaPlugin {
                 builder.append("Entity types: ");
 
                 for (NoBrainMobs mob : NoBrainMobs.values()) {
-                    builder.append(mob.getName()).append(", ");
+                    builder.append(mob.getType().name()).append(", ");
                 }
 
                 builder.delete(builder.length() - 2, builder.length());
@@ -69,7 +69,7 @@ public class ReBrainPlugin extends JavaPlugin {
                 NoBrainMobs mob = null;
 
                 for (NoBrainMobs i : NoBrainMobs.values()) {
-                    if (i.getName().equalsIgnoreCase(entityTypeName)) {
+                    if (i.getType().name().equalsIgnoreCase(entityTypeName)) {
                         mob = i;
                         break;
                     }
