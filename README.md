@@ -33,7 +33,9 @@ What is different:
  * Removed begging from wolf
  * Removed moving through village from zombie
  
- * Slowed down entity collisions for: Blaze, Cave Spider, Chicken, Cow, Creeper, Enderman, Endermite, Horse, Iron Golem, Mushroom Cow, Pig, Pig Zombie, Sheep, Skeleton, Spider, Witch, Wolf, Zombie
+ * Slowed down entity push collisions for: Blaze, Cave Spider, Chicken, Cow, Creeper, Enderman, Endermite, Horse, Iron Golem, Magma Cube, Mushroom Cow, Ocelot, Pig, Pig Zombie, Sheep, Skeleton, Slime, Snow Golem, Spider, Witch, Wolf, Zombie
+ 
+ * Removed entity push collisions from: Ghast, Squid
 
  * Replaced pathfinder AI for simpler in: Cave Spider, Chicken, Cow, Enderman, Endermite, Horse, Mushroom Cow, Pig, Pig Zombie, Sheep, Silverfish, Spider, Zombie
  

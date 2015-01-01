@@ -10,7 +10,7 @@ public class EntityCollisionHandler {
     public static void collide(EntityLiving cEntity) {
         int collisionsLimiter = 4;
 
-        if (cEntity.isAlive()) {
+        if (cEntity.ae()) {
             final List list = cEntity.world.getEntities(cEntity, cEntity.getBoundingBox().grow(0.2000000029802322D, 0.0D, 0.2000000029802322D));
 
             if (list != null && !list.isEmpty()) {

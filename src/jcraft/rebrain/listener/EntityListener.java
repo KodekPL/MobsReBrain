@@ -10,6 +10,7 @@ import org.bukkit.entity.Horse;
 import org.bukkit.entity.IronGolem;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Sheep;
+import org.bukkit.entity.Slime;
 import org.bukkit.entity.Tameable;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Zombie;
@@ -140,6 +141,13 @@ public class EntityListener implements Listener {
             final Villager newVillager = (Villager) newEntity;
 
             newVillager.setProfession(oldVillager.getProfession());
+        }
+
+        if (entity instanceof Slime) { // Counts for MagmaCube too
+            final Slime oldSlime = (Slime) entity;
+            final Slime newSlime = (Slime) newEntity;
+
+            newSlime.setSize(oldSlime.getSize());
         }
 
         if (newEntity instanceof LivingEntity && entity.getEquipment() != null) {

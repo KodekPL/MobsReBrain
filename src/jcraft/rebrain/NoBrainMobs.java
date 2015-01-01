@@ -11,16 +11,22 @@ import jcraft.rebrain.mob.NoBrainCreeper;
 import jcraft.rebrain.mob.NoBrainEnderman;
 import jcraft.rebrain.mob.NoBrainEndermite;
 import jcraft.rebrain.mob.NoBrainEntity;
+import jcraft.rebrain.mob.NoBrainGhast;
 import jcraft.rebrain.mob.NoBrainGuardian;
 import jcraft.rebrain.mob.NoBrainHorse;
 import jcraft.rebrain.mob.NoBrainIronGolem;
+import jcraft.rebrain.mob.NoBrainMagmaCube;
 import jcraft.rebrain.mob.NoBrainMushroomCow;
+import jcraft.rebrain.mob.NoBrainOcelot;
 import jcraft.rebrain.mob.NoBrainPig;
 import jcraft.rebrain.mob.NoBrainPigZombie;
 import jcraft.rebrain.mob.NoBrainSheep;
 import jcraft.rebrain.mob.NoBrainSilverfish;
 import jcraft.rebrain.mob.NoBrainSkeleton;
+import jcraft.rebrain.mob.NoBrainSlime;
+import jcraft.rebrain.mob.NoBrainSnowman;
 import jcraft.rebrain.mob.NoBrainSpider;
+import jcraft.rebrain.mob.NoBrainSquid;
 import jcraft.rebrain.mob.NoBrainVillager;
 import jcraft.rebrain.mob.NoBrainWitch;
 import jcraft.rebrain.mob.NoBrainWolf;
@@ -35,17 +41,23 @@ import net.minecraft.server.v1_8_R1.EntityCow;
 import net.minecraft.server.v1_8_R1.EntityCreeper;
 import net.minecraft.server.v1_8_R1.EntityEnderman;
 import net.minecraft.server.v1_8_R1.EntityEndermite;
+import net.minecraft.server.v1_8_R1.EntityGhast;
 import net.minecraft.server.v1_8_R1.EntityGuardian;
 import net.minecraft.server.v1_8_R1.EntityHorse;
 import net.minecraft.server.v1_8_R1.EntityInsentient;
 import net.minecraft.server.v1_8_R1.EntityIronGolem;
+import net.minecraft.server.v1_8_R1.EntityMagmaCube;
 import net.minecraft.server.v1_8_R1.EntityMushroomCow;
+import net.minecraft.server.v1_8_R1.EntityOcelot;
 import net.minecraft.server.v1_8_R1.EntityPig;
 import net.minecraft.server.v1_8_R1.EntityPigZombie;
 import net.minecraft.server.v1_8_R1.EntitySheep;
 import net.minecraft.server.v1_8_R1.EntitySilverfish;
 import net.minecraft.server.v1_8_R1.EntitySkeleton;
+import net.minecraft.server.v1_8_R1.EntitySlime;
+import net.minecraft.server.v1_8_R1.EntitySnowman;
 import net.minecraft.server.v1_8_R1.EntitySpider;
+import net.minecraft.server.v1_8_R1.EntitySquid;
 import net.minecraft.server.v1_8_R1.EntityVillager;
 import net.minecraft.server.v1_8_R1.EntityWitch;
 import net.minecraft.server.v1_8_R1.EntityWolf;
@@ -65,8 +77,11 @@ public enum NoBrainMobs {
     SHEEP("Sheep", 91, NoBrainSheep.class, EntitySheep.class, EntityType.SHEEP),
     COW("Cow", 92, NoBrainCow.class, EntityCow.class, EntityType.COW),
     CHIKEN("Chicken", 93, NoBrainChicken.class, EntityChicken.class, EntityType.CHICKEN),
+    SQUID("Squid", 94, NoBrainSquid.class, EntitySquid.class, EntityType.SQUID),
     WOLF("Wolf", 95, NoBrainWolf.class, EntityWolf.class, EntityType.WOLF),
     MUSHROOM_COW("MushroomCow", 96, NoBrainMushroomCow.class, EntityMushroomCow.class, EntityType.MUSHROOM_COW),
+    SNOWMAN("SnowMan", 97, NoBrainSnowman.class, EntitySnowman.class, EntityType.SNOWMAN),
+    OCELOT("Ozelot", 98, NoBrainOcelot.class, EntityOcelot.class, EntityType.OCELOT),
     IRON_GOLEM("VillagerGolem", 99, NoBrainIronGolem.class, EntityIronGolem.class, EntityType.IRON_GOLEM),
     HORSE("EntityHorse", 100, NoBrainHorse.class, EntityHorse.class, EntityType.HORSE),
     VILLAGER("Villager", 120, NoBrainVillager.class, EntityVillager.class, EntityType.VILLAGER),
@@ -75,11 +90,14 @@ public enum NoBrainMobs {
     SKELETON("Skeleton", 51, NoBrainSkeleton.class, EntitySkeleton.class, EntityType.SKELETON),
     SPIDER("Spider", 52, NoBrainSpider.class, EntitySpider.class, EntityType.SPIDER),
     ZOMBIE("Zombie", 54, NoBrainZombie.class, EntityZombie.class, EntityType.ZOMBIE),
+    SLIME("Slime", 55, NoBrainSlime.class, EntitySlime.class, EntityType.SLIME),
+    GHAST("Ghast", 56, NoBrainGhast.class, EntityGhast.class, EntityType.GHAST),
     PIG_ZOMBIE("PigZombie", 57, NoBrainPigZombie.class, EntityPigZombie.class, EntityType.PIG_ZOMBIE),
     ENDERMAN("Enderman", 58, NoBrainEnderman.class, EntityEnderman.class, EntityType.ENDERMAN),
     CAVE_SPIDER("CaveSpider", 59, NoBrainCaveSpider.class, EntityCaveSpider.class, EntityType.CAVE_SPIDER),
     SILVERFISH("Silverfish", 60, NoBrainSilverfish.class, EntitySilverfish.class, EntityType.SILVERFISH),
     BLAZE("Blaze", 61, NoBrainBlaze.class, EntityBlaze.class, EntityType.BLAZE),
+    MAGMA_CUBE("LavaSlime", 62, NoBrainMagmaCube.class, EntityMagmaCube.class, EntityType.MAGMA_CUBE),
     WITCH("Witch", 66, NoBrainWitch.class, EntityWitch.class, EntityType.WITCH),
     ENDERMITE("Endermite", 67, NoBrainEndermite.class, EntityEndermite.class, EntityType.ENDERMITE),
     GUARDIAN("Guardian", 68, NoBrainGuardian.class, EntityGuardian.class, EntityType.GUARDIAN);
