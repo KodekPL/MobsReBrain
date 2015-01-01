@@ -4,7 +4,7 @@ MobsReBrain
 Works only with Spigot (MC 1.8-R0.1).
 
 What is different:
- * Removed random stroll from: Blaze, Cave Spider, Chicken, Cow, Creeper, Enderman, Endermite, Horse, Iron Golem, Mushroom Cow, Pig, Pig Zombie, Sheep, Skeleton, Spider, Witch, Wolf, Zombie
+ * Removed random stroll from: Blaze, Cave Spider, Chicken, Cow, Creeper, Enderman, Endermite, Horse, Iron Golem, Mushroom Cow, Ocelot, Pig, Pig Zombie, Sheep, Skeleton, Spider, Witch, Wolf, Zombie
  * Removed looking at player from: Blaze, Cave Spider, Creeper, Enderman, Endermite, Pig Zombie, Skeleton, Spider, Witch, Wolf, Zombie
  * Removed attacking of iron golem from: Cave Spider, Skeleton, Spider, Zombie
  * Removed following of parent from: Chicken, Cow, Horse, Mushroom Cow, Pig, Sheep
@@ -13,6 +13,7 @@ What is different:
  * Removed attacking of endermites from enderman
  * Removed attacking of squids from guardian
  * Removed attacking of sheep and rabbits from wolf
+ * Removed attacking of chickens from ocelot
  * Removed auto attacking of skeletons from wolf
  * Removed attacking of villagers from zombie
 
