@@ -69,7 +69,7 @@ public class NoBrainSpider extends EntitySpider implements NoBrainEntity {
         // this.targetSelector.a(3, new PathfinderGoalSpiderNearestAttackableTarget(this, EntityIronGolem.class));
     }
 
-    int collisionCooldown = 4;
+    int collisionCooldown = 6;
 
     @Override
     protected void bK() {
@@ -77,7 +77,7 @@ public class NoBrainSpider extends EntitySpider implements NoBrainEntity {
             return;
         }
 
-        collisionCooldown = 4;
+        collisionCooldown = 6;
 
         EntityCollisionHandler.collide(this);
     }

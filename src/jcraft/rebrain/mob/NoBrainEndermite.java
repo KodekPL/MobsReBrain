@@ -50,7 +50,7 @@ public class NoBrainEndermite extends EntityEndermite implements NoBrainEntity {
         this.targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityHuman.class, true));
     }
 
-    int collisionCooldown = 4;
+    int collisionCooldown = 6;
 
     @Override
     protected void bK() {
@@ -58,7 +58,7 @@ public class NoBrainEndermite extends EntityEndermite implements NoBrainEntity {
             return;
         }
 
-        collisionCooldown = 4;
+        collisionCooldown = 6;
 
         EntityCollisionHandler.collide(this);
     }

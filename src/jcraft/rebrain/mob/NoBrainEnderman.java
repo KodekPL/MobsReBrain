@@ -60,7 +60,7 @@ public class NoBrainEnderman extends EntityEnderman implements NoBrainEntity {
         // EntitySelectorPlayerSpawnedEndermites(this)));
     }
 
-    int collisionCooldown = 4;
+    int collisionCooldown = 6;
 
     @Override
     protected void bK() {
@@ -68,7 +68,7 @@ public class NoBrainEnderman extends EntityEnderman implements NoBrainEntity {
             return;
         }
 
-        collisionCooldown = 4;
+        collisionCooldown = 6;
 
         EntityCollisionHandler.collide(this);
     }

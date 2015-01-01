@@ -51,7 +51,7 @@ public class NoBrainCreeper extends EntityCreeper implements NoBrainEntity {
         ReflectionsUtils.setPrivateField("maxFuseTicks", EntityCreeper.class, this, ticks);
     }
 
-    int collisionCooldown = 4;
+    int collisionCooldown = 6;
 
     @Override
     protected void bK() {
@@ -59,7 +59,7 @@ public class NoBrainCreeper extends EntityCreeper implements NoBrainEntity {
             return;
         }
 
-        collisionCooldown = 4;
+        collisionCooldown = 6;
 
         EntityCollisionHandler.collide(this);
     }
