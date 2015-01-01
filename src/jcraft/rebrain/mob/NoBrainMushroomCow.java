@@ -119,7 +119,7 @@ public class NoBrainMushroomCow extends EntityMushroomCow implements NoBrainEnti
         return super.a(entityhuman);
     }
 
-    int collisionCooldown = 5;
+    int collisionCooldown = 4;
 
     @Override
     protected void bK() {
@@ -127,7 +127,7 @@ public class NoBrainMushroomCow extends EntityMushroomCow implements NoBrainEnti
             return;
         }
 
-        collisionCooldown = 5;
+        collisionCooldown = 4;
 
         EntityCollisionHandler.collide(this);
     }

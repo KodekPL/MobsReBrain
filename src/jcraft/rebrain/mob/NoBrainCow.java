@@ -54,7 +54,7 @@ public class NoBrainCow extends EntityCow implements NoBrainEntity {
         this.goalSelector.a(7, new PathfinderGoalRandomLookaround(this));
     }
 
-    int collisionCooldown = 5;
+    int collisionCooldown = 4;
 
     @Override
     protected void bK() {
@@ -62,7 +62,7 @@ public class NoBrainCow extends EntityCow implements NoBrainEntity {
             return;
         }
 
-        collisionCooldown = 5;
+        collisionCooldown = 4;
 
         EntityCollisionHandler.collide(this);
     }

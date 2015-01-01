@@ -58,7 +58,7 @@ public class NoBrainHorse extends EntityHorse implements NoBrainEntity {
         loadChest();
     }
 
-    int collisionCooldown = 5;
+    int collisionCooldown = 4;
 
     @Override
     protected void bK() {
@@ -66,7 +66,7 @@ public class NoBrainHorse extends EntityHorse implements NoBrainEntity {
             return;
         }
 
-        collisionCooldown = 5;
+        collisionCooldown = 4;
 
         EntityCollisionHandler.collide(this);
     }

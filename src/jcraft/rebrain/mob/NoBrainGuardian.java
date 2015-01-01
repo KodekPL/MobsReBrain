@@ -73,7 +73,7 @@ public class NoBrainGuardian extends EntityGuardian implements NoBrainEntity {
         ReflectionsUtils.setPrivateField("c", EntityGuardian.class, this, randomValue);
     }
 
-    int collisionCooldown = 5;
+    int collisionCooldown = 4;
 
     @Override
     protected void bK() {
@@ -81,7 +81,7 @@ public class NoBrainGuardian extends EntityGuardian implements NoBrainEntity {
             return;
         }
 
-        collisionCooldown = 5;
+        collisionCooldown = 4;
 
         EntityCollisionHandler.collide(this);
     }

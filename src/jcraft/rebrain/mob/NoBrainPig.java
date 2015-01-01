@@ -64,7 +64,7 @@ public class NoBrainPig extends EntityPig implements NoBrainEntity {
         this.goalSelector.a(8, new PathfinderGoalRandomLookaround(this));
     }
 
-    int collisionCooldown = 5;
+    int collisionCooldown = 4;
 
     @Override
     protected void bK() {
@@ -72,7 +72,7 @@ public class NoBrainPig extends EntityPig implements NoBrainEntity {
             return;
         }
 
-        collisionCooldown = 5;
+        collisionCooldown = 4;
 
         EntityCollisionHandler.collide(this);
     }

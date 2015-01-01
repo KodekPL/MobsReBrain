@@ -63,7 +63,7 @@ public class NoBrainIronGolem extends EntityIronGolem implements NoBrainEntity {
         this.targetSelector.a(3, (PathfinderGoalNearestAttackableTarget) pathGoalNearGolemTarget);
     }
 
-    int collisionCooldown = 5;
+    int collisionCooldown = 4;
 
     @Override
     protected void bK() {
@@ -71,7 +71,7 @@ public class NoBrainIronGolem extends EntityIronGolem implements NoBrainEntity {
             return;
         }
 
-        collisionCooldown = 5;
+        collisionCooldown = 4;
 
         EntityCollisionHandler.collide(this);
     }

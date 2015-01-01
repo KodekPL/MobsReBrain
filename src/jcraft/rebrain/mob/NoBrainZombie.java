@@ -76,7 +76,7 @@ public class NoBrainZombie extends EntityZombie implements NoBrainEntity {
         // this.targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityIronGolem.class, true));
     }
 
-    int collisionCooldown = 5;
+    int collisionCooldown = 4;
 
     @Override
     protected void bK() {
@@ -84,7 +84,7 @@ public class NoBrainZombie extends EntityZombie implements NoBrainEntity {
             return;
         }
 
-        collisionCooldown = 5;
+        collisionCooldown = 4;
 
         EntityCollisionHandler.collide(this);
     }

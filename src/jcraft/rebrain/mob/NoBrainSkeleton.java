@@ -52,7 +52,7 @@ public class NoBrainSkeleton extends EntitySkeleton implements NoBrainEntity {
         }
     }
 
-    int collisionCooldown = 5;
+    int collisionCooldown = 4;
 
     @Override
     protected void bK() {
@@ -60,7 +60,7 @@ public class NoBrainSkeleton extends EntitySkeleton implements NoBrainEntity {
             return;
         }
 
-        collisionCooldown = 5;
+        collisionCooldown = 4;
 
         EntityCollisionHandler.collide(this);
     }
