@@ -200,4 +200,14 @@ public enum NoBrainMobs {
         return ((org.bukkit.entity.Entity) entity.getBukkitEntity());
     }
 
+    public static NoBrainEntity convertToNoBrain(org.bukkit.entity.Entity entity) {
+        final Entity nmsEntity = ((CraftEntity) entity).getHandle();
+
+        if (nmsEntity instanceof NoBrainEntity) {
+            return (NoBrainEntity) nmsEntity;
+        }
+
+        return null;
+    }
+
 }

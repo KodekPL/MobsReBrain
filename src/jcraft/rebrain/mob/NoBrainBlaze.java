@@ -60,4 +60,16 @@ public class NoBrainBlaze extends EntityBlaze implements NoBrainEntity {
         EntityCollisionHandler.collide(this);
     }
 
+    boolean fromSpawner = false;
+
+    @Override
+    public void setFromSpawner() {
+        fromSpawner = true;
+    }
+
+    @Override
+    public boolean isFromSpawner() {
+        return fromSpawner;
+    }
+
 }

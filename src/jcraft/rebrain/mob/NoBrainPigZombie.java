@@ -68,4 +68,14 @@ public class NoBrainPigZombie extends EntityPigZombie implements NoBrainEntity {
         EntityCollisionHandler.collide(this);
     }
 
+    @Override
+    public void setFromSpawner() {
+
+    }
+
+    @Override
+    public boolean isFromSpawner() {
+        return false;
+    }
+
 }

@@ -77,4 +77,14 @@ public class NoBrainPig extends EntityPig implements NoBrainEntity {
         EntityCollisionHandler.collide(this);
     }
 
+    @Override
+    public void setFromSpawner() {
+
+    }
+
+    @Override
+    public boolean isFromSpawner() {
+        return false;
+    }
+
 }

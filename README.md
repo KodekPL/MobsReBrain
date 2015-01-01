@@ -37,6 +37,8 @@ What is different:
  * Slowed down entity push collisions for: Blaze, Cave Spider, Chicken, Cow, Creeper, Enderman, Endermite, Horse, Iron Golem, Magma Cube, Mushroom Cow, Ocelot, Pig, Pig Zombie, Sheep, Skeleton, Slime, Snow Golem, Spider, Witch, Wolf, Zombie
  
  * Removed entity push collisions from: Ghast, Squid
+ 
+ * Removed entity push collisions from entities spawned by spawners
 
  * Replaced pathfinder AI for simpler in: Cave Spider, Chicken, Cow, Enderman, Endermite, Horse, Mushroom Cow, Pig, Pig Zombie, Sheep, Silverfish, Spider, Zombie
  

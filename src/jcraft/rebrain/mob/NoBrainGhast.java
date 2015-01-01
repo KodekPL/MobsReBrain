@@ -14,4 +14,14 @@ public class NoBrainGhast extends EntityGhast implements NoBrainEntity {
         // Removed push collisions
     }
 
+    @Override
+    public void setFromSpawner() {
+
+    }
+
+    @Override
+    public boolean isFromSpawner() {
+        return false;
+    }
+
 }

@@ -2,6 +2,7 @@ package jcraft.rebrain.listener;
 
 import jcraft.rebrain.NoBrainMobs;
 import jcraft.rebrain.ReBrainPlugin;
+import jcraft.rebrain.mob.NoBrainEntity;
 
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Chicken;
@@ -18,6 +19,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.event.entity.SpawnerSpawnEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class EntityListener implements Listener {
@@ -26,6 +28,15 @@ public class EntityListener implements Listener {
 
     public EntityListener(ReBrainPlugin plugin) {
         this.plugin = plugin;
+    }
+
+    @EventHandler(ignoreCancelled = true)
+    public void onEntitySpawnerSpawn(SpawnerSpawnEvent event) {
+        final NoBrainEntity entity = NoBrainMobs.convertToNoBrain(event.getEntity());
+
+        if (entity != null) {
+            entity.setFromSpawner();
+        }
     }
 
     @EventHandler(ignoreCancelled = true)

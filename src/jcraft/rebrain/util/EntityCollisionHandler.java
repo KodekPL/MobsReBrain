@@ -2,12 +2,17 @@ package jcraft.rebrain.util;
 
 import java.util.List;
 
+import jcraft.rebrain.mob.NoBrainEntity;
 import net.minecraft.server.v1_8_R1.Entity;
 import net.minecraft.server.v1_8_R1.EntityLiving;
 
 public class EntityCollisionHandler {
 
     public static void collide(EntityLiving cEntity) {
+        if (cEntity instanceof NoBrainEntity && ((NoBrainEntity) cEntity).isFromSpawner()) {
+            return;
+        }
+
         int collisionsLimiter = 4;
 
         if (cEntity.ae()) {

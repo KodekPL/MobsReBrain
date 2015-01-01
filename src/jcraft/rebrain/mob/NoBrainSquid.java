@@ -16,4 +16,14 @@ public class NoBrainSquid extends EntitySquid implements NoBrainEntity {
         // Removed push collisions
     }
 
+    @Override
+    public void setFromSpawner() {
+
+    }
+
+    @Override
+    public boolean isFromSpawner() {
+        return false;
+    }
+
 }

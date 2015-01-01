@@ -73,4 +73,14 @@ public class NoBrainEnderman extends EntityEnderman implements NoBrainEntity {
         EntityCollisionHandler.collide(this);
     }
 
+    @Override
+    public void setFromSpawner() {
+
+    }
+
+    @Override
+    public boolean isFromSpawner() {
+        return false;
+    }
+
 }

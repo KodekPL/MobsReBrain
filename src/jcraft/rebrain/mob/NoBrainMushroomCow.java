@@ -132,4 +132,14 @@ public class NoBrainMushroomCow extends EntityMushroomCow implements NoBrainEnti
         EntityCollisionHandler.collide(this);
     }
 
+    @Override
+    public void setFromSpawner() {
+
+    }
+
+    @Override
+    public boolean isFromSpawner() {
+        return false;
+    }
+
 }
