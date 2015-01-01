@@ -2,6 +2,7 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
+import jcraft.rebrain.util.EntityCollisionHandler;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityWolf;
 import net.minecraft.server.v1_8_R1.Navigation;
@@ -58,6 +59,19 @@ public class NoBrainWolf extends EntityWolf implements NoBrainEntity {
         // this.targetSelector.a(5, new PathfinderGoalNearestAttackableTarget(this, EntitySkeleton.class, false));
 
         setTamed(false);
+    }
+
+    int collisionCooldown = 4;
+
+    @Override
+    protected void bK() {
+        if (collisionCooldown-- > 0) {
+            return;
+        }
+
+        collisionCooldown = 4;
+
+        EntityCollisionHandler.collide(this);
     }
 
 }

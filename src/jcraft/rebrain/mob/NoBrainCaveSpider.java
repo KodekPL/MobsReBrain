@@ -4,6 +4,7 @@ import java.util.List;
 
 import jcraft.rebrain.navigable.CustomSimpleControllerMove;
 import jcraft.rebrain.navigable.CustomSimpleNavigation;
+import jcraft.rebrain.util.EntityCollisionHandler;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityCaveSpider;
 import net.minecraft.server.v1_8_R1.EntityHuman;
@@ -66,6 +67,19 @@ public class NoBrainCaveSpider extends EntityCaveSpider implements NoBrainEntity
         this.targetSelector.a(2, (PathfinderGoalNearestAttackableTarget) pathGoalSpiderNearestAttackableTarget);
 
         // this.targetSelector.a(3, new PathfinderGoalSpiderNearestAttackableTarget(this, EntityIronGolem.class));
+    }
+
+    int collisionCooldown = 4;
+
+    @Override
+    protected void bK() {
+        if (collisionCooldown-- > 0) {
+            return;
+        }
+
+        collisionCooldown = 4;
+
+        EntityCollisionHandler.collide(this);
     }
 
 }

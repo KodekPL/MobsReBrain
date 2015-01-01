@@ -4,6 +4,7 @@ import java.util.List;
 
 import jcraft.rebrain.navigable.CustomSimpleControllerMove;
 import jcraft.rebrain.navigable.CustomSimpleNavigation;
+import jcraft.rebrain.util.EntityCollisionHandler;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityHorse;
 import net.minecraft.server.v1_8_R1.EntityHuman;
@@ -55,7 +56,19 @@ public class NoBrainHorse extends EntityHorse implements NoBrainEntity {
         this.goalSelector.a(8, new PathfinderGoalRandomLookaround(this));
 
         loadChest();
+    }
 
+    int collisionCooldown = 4;
+
+    @Override
+    protected void bK() {
+        if (collisionCooldown-- > 0) {
+            return;
+        }
+
+        collisionCooldown = 4;
+
+        EntityCollisionHandler.collide(this);
     }
 
 }

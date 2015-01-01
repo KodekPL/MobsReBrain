@@ -3,3 +3,11 @@ version: 1.1
 author: Kodek
 main: jcraft.rebrain.ReBrainPlugin
 load: STARTUP
+
+permissions:
+  mobsrebrain.spawn:
+    default: op
+    
+commands:
+  spawnentity:
+    permission: mobsrebrain.spawn

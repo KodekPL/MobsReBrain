@@ -2,6 +2,7 @@ package jcraft.rebrain.mob;
 
 import java.util.List;
 
+import jcraft.rebrain.util.EntityCollisionHandler;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityCreature;
 import net.minecraft.server.v1_8_R1.EntityHuman;
@@ -60,6 +61,19 @@ public class NoBrainIronGolem extends EntityIronGolem implements NoBrainEntity {
                         boolean.class, boolean.class, Predicate.class }, this, EntityInsentient.class, 10, false, true, IMonster.e);
 
         this.targetSelector.a(3, (PathfinderGoalNearestAttackableTarget) pathGoalNearGolemTarget);
+    }
+
+    int collisionCooldown = 4;
+
+    @Override
+    protected void bK() {
+        if (collisionCooldown-- > 0) {
+            return;
+        }
+
+        collisionCooldown = 4;
+
+        EntityCollisionHandler.collide(this);
     }
 
 }

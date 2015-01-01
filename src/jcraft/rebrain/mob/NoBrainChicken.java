@@ -4,6 +4,7 @@ import java.util.List;
 
 import jcraft.rebrain.navigable.CustomSimpleControllerMove;
 import jcraft.rebrain.navigable.CustomSimpleNavigation;
+import jcraft.rebrain.util.EntityCollisionHandler;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityChicken;
 import net.minecraft.server.v1_8_R1.EntityHuman;
@@ -65,6 +66,19 @@ public class NoBrainChicken extends EntityChicken implements NoBrainEntity {
             a(Items.EGG, 1);
             this.bq = (this.random.nextInt(6000) + 6000);
         }
+    }
+
+    int collisionCooldown = 4;
+
+    @Override
+    protected void bK() {
+        if (collisionCooldown-- > 0) {
+            return;
+        }
+
+        collisionCooldown = 4;
+
+        EntityCollisionHandler.collide(this);
     }
 
 }
