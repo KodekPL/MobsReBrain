@@ -129,7 +129,7 @@ public class NoBrainMushroomCow extends EntityMushroomCow implements NoBrainEnti
 
         collisionCooldown = 4;
 
-        EntityCollisionHandler.collide(this);
+        EntityCollisionHandler.collide(this, true);
     }
 
     @Override

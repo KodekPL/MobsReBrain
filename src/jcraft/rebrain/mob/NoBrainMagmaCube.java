@@ -20,7 +20,7 @@ public class NoBrainMagmaCube extends EntityMagmaCube implements NoBrainEntity {
 
         collisionCooldown = 6;
 
-        EntityCollisionHandler.collide(this);
+        EntityCollisionHandler.collide(this, false);
     }
 
     @Override

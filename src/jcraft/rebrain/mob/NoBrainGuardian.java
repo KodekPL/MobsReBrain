@@ -83,7 +83,7 @@ public class NoBrainGuardian extends EntityGuardian implements NoBrainEntity {
 
         collisionCooldown = 6;
 
-        EntityCollisionHandler.collide(this);
+        EntityCollisionHandler.collide(this, false);
     }
 
     @Override

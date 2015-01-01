@@ -57,7 +57,7 @@ public class NoBrainBlaze extends EntityBlaze implements NoBrainEntity {
 
         collisionCooldown = 6;
 
-        EntityCollisionHandler.collide(this);
+        EntityCollisionHandler.collide(this, false);
     }
 
     boolean fromSpawner = false;

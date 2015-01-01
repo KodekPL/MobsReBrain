@@ -68,7 +68,7 @@ public class NoBrainHorse extends EntityHorse implements NoBrainEntity {
 
         collisionCooldown = 4;
 
-        EntityCollisionHandler.collide(this);
+        EntityCollisionHandler.collide(this, true);
     }
 
     @Override

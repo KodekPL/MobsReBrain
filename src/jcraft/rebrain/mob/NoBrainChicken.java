@@ -78,7 +78,7 @@ public class NoBrainChicken extends EntityChicken implements NoBrainEntity {
 
         collisionCooldown = 4;
 
-        EntityCollisionHandler.collide(this);
+        EntityCollisionHandler.collide(this, true);
     }
 
     @Override

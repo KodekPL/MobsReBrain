@@ -70,7 +70,7 @@ public class NoBrainEnderman extends EntityEnderman implements NoBrainEntity {
 
         collisionCooldown = 6;
 
-        EntityCollisionHandler.collide(this);
+        EntityCollisionHandler.collide(this, false);
     }
 
     @Override

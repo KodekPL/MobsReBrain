@@ -73,7 +73,7 @@ public class NoBrainIronGolem extends EntityIronGolem implements NoBrainEntity {
 
         collisionCooldown = 4;
 
-        EntityCollisionHandler.collide(this);
+        EntityCollisionHandler.collide(this, false);
     }
 
     @Override

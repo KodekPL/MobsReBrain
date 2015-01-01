@@ -62,7 +62,7 @@ public class NoBrainSkeleton extends EntitySkeleton implements NoBrainEntity {
 
         collisionCooldown = 6;
 
-        EntityCollisionHandler.collide(this);
+        EntityCollisionHandler.collide(this, false);
     }
 
     boolean fromSpawner = false;

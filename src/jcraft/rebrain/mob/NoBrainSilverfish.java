@@ -63,7 +63,7 @@ public class NoBrainSilverfish extends EntitySilverfish implements NoBrainEntity
 
         collisionCooldown = 6;
 
-        EntityCollisionHandler.collide(this);
+        EntityCollisionHandler.collide(this, false);
     }
 
     boolean fromSpawner = false;

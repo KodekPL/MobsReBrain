@@ -65,7 +65,7 @@ public class NoBrainPigZombie extends EntityPigZombie implements NoBrainEntity {
 
         collisionCooldown = 6;
 
-        EntityCollisionHandler.collide(this);
+        EntityCollisionHandler.collide(this, false);
     }
 
     @Override

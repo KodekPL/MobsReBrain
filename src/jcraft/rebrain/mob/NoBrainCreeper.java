@@ -61,7 +61,7 @@ public class NoBrainCreeper extends EntityCreeper implements NoBrainEntity {
 
         collisionCooldown = 6;
 
-        EntityCollisionHandler.collide(this);
+        EntityCollisionHandler.collide(this, false);
     }
 
     @Override

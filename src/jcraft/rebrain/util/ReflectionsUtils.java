@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 public class ReflectionsUtils {
 
     public static Object getPrivateField(String fieldName, Class<?> clazz, Object object) {
-        Field field;
+        final Field field;
         Object o = null;
 
         try {
@@ -25,7 +25,7 @@ public class ReflectionsUtils {
 
     public static void setPrivateField(String fieldName, Class<?> clazz, Object classObject, Object classValue) {
         try {
-            Field field = clazz.getDeclaredField(fieldName);
+            final Field field = clazz.getDeclaredField(fieldName);
 
             field.setAccessible(true);
 
@@ -54,7 +54,7 @@ public class ReflectionsUtils {
 
     public static void invokePrivateMethod(String methodName, Class<?> clazz, Object object) {
         try {
-            Method method = clazz.getDeclaredMethod(methodName);
+            final Method method = clazz.getDeclaredMethod(methodName);
 
             method.setAccessible(true);
 
