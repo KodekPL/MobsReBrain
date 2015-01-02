@@ -70,7 +70,7 @@ public class EntityListener implements Listener {
             return;
         }
 
-        final Entity newEntity = NoBrainMobs.convertToBukkit(NoBrainMobs.spawnEntity(noBrainMob, entity.getLocation(), reason));
+        final Entity newEntity = NoBrainMobs.convertToBukkit(NoBrainMobs.spawnEntity(noBrainMob, entity.getLocation()));
 
         if (entity instanceof Ageable) {
             final Ageable oldAgeable = (Ageable) entity;
