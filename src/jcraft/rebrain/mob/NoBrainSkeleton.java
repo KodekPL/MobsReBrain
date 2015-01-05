@@ -4,8 +4,13 @@ import java.util.List;
 
 import jcraft.rebrain.util.EntityCollisionHandler;
 import jcraft.rebrain.util.ReflectionsUtils;
+import net.minecraft.server.v1_8_R1.BiomeBase;
+import net.minecraft.server.v1_8_R1.BlockPosition;
+import net.minecraft.server.v1_8_R1.DifficultyDamageScaler;
 import net.minecraft.server.v1_8_R1.EntityHuman;
 import net.minecraft.server.v1_8_R1.EntitySkeleton;
+import net.minecraft.server.v1_8_R1.GroupDataEntity;
+import net.minecraft.server.v1_8_R1.MathHelper;
 import net.minecraft.server.v1_8_R1.PathfinderGoalFleeSun;
 import net.minecraft.server.v1_8_R1.PathfinderGoalFloat;
 import net.minecraft.server.v1_8_R1.PathfinderGoalHurtByTarget;
@@ -14,6 +19,7 @@ import net.minecraft.server.v1_8_R1.PathfinderGoalRandomLookaround;
 import net.minecraft.server.v1_8_R1.PathfinderGoalRestrictSun;
 import net.minecraft.server.v1_8_R1.PathfinderGoalSelector;
 import net.minecraft.server.v1_8_R1.World;
+import net.minecraft.server.v1_8_R1.WorldProviderHell;
 
 public class NoBrainSkeleton extends EntitySkeleton implements NoBrainEntity {
 
@@ -50,6 +56,21 @@ public class NoBrainSkeleton extends EntitySkeleton implements NoBrainEntity {
         if ((world != null) && (!world.isStatic)) {
             n();
         }
+    }
+
+    public GroupDataEntity prepare(DifficultyDamageScaler difficultydamagescaler, GroupDataEntity groupdataentity) {
+        super.prepare(difficultydamagescaler, groupdataentity);
+
+        // Remove incorrect skeletons appearing in the nether
+        if (this.getSkeletonType() == 1 && this.world.worldProvider instanceof WorldProviderHell) {
+            final BiomeBase biomebase = this.world.getBiome(new BlockPosition(MathHelper.floor(this.locX), 0, MathHelper.floor(this.locZ)));
+
+            if (biomebase != BiomeBase.HELL) {
+                this.world.removeEntity(this);
+            }
+        }
+
+        return groupdataentity;
     }
 
     int collisionCooldown = 6;

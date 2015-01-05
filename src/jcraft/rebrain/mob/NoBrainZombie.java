@@ -58,9 +58,7 @@ public class NoBrainZombie extends EntityZombie implements NoBrainEntity {
 
     @Override
     protected void n() {
-        // if (this.world.spigotConfig.zombieAggressiveTowardsVillager) {
         // this.goalSelector.a(4, new PathfinderGoalMeleeAttack(this, EntityVillager.class, 1.0D, true));
-        // }
 
         // this.goalSelector.a(5, new PathfinderGoalMeleeAttack(this, EntityIronGolem.class, 1.0D, true));
 
@@ -69,9 +67,7 @@ public class NoBrainZombie extends EntityZombie implements NoBrainEntity {
         this.targetSelector.a(1, new PathfinderGoalHurtByTarget(this, true, new Class[] { EntityPigZombie.class }));
         this.targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityHuman.class, true));
 
-        // if (this.world.spigotConfig.zombieAggressiveTowardsVillager) {
         // this.targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityVillager.class, false));
-        // }
 
         // this.targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityIronGolem.class, true));
     }
