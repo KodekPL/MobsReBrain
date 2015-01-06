@@ -4,6 +4,7 @@ import java.util.List;
 
 import jcraft.rebrain.navigable.CustomSimpleControllerMove;
 import jcraft.rebrain.navigable.CustomSimpleNavigation;
+import jcraft.rebrain.pathfinder.CustomPathfinderGoalSpiderNearestAttackableTarget;
 import jcraft.rebrain.util.EntityCollisionHandler;
 import jcraft.rebrain.util.ReflectionsUtils;
 import net.minecraft.server.v1_8_R1.EntityCaveSpider;
@@ -13,7 +14,6 @@ import net.minecraft.server.v1_8_R1.PathfinderGoalFloat;
 import net.minecraft.server.v1_8_R1.PathfinderGoalHurtByTarget;
 import net.minecraft.server.v1_8_R1.PathfinderGoalLeapAtTarget;
 import net.minecraft.server.v1_8_R1.PathfinderGoalMeleeAttack;
-import net.minecraft.server.v1_8_R1.PathfinderGoalNearestAttackableTarget;
 import net.minecraft.server.v1_8_R1.PathfinderGoalRandomLookaround;
 import net.minecraft.server.v1_8_R1.PathfinderGoalSelector;
 import net.minecraft.server.v1_8_R1.World;
@@ -58,13 +58,7 @@ public class NoBrainCaveSpider extends EntityCaveSpider implements NoBrainEntity
         this.goalSelector.a(6, new PathfinderGoalRandomLookaround(this));
 
         this.targetSelector.a(1, new PathfinderGoalHurtByTarget(this, false, new Class[0]));
-
-        // PathfinderGoalSpiderNearestAttackableTarget
-        final Object pathGoalSpiderNearestAttackableTarget = ReflectionsUtils.createPrivateInstance(
-                "net.minecraft.server.v1_8_R1.PathfinderGoalSpiderNearestAttackableTarget", new Class<?>[] { EntitySpider.class, Class.class }, this,
-                EntityHuman.class);
-
-        this.targetSelector.a(2, (PathfinderGoalNearestAttackableTarget) pathGoalSpiderNearestAttackableTarget);
+        this.targetSelector.a(2, new CustomPathfinderGoalSpiderNearestAttackableTarget(this, EntityHuman.class, false));
 
         // this.targetSelector.a(3, new PathfinderGoalSpiderNearestAttackableTarget(this, EntityIronGolem.class));
     }
