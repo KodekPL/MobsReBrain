@@ -51,6 +51,10 @@ public class NoBrainCreeper extends EntityCreeper implements NoBrainEntity {
         ReflectionsUtils.setPrivateField("maxFuseTicks", EntityCreeper.class, this, ticks);
     }
 
+    public void setExplosionRadius(int radius) {
+        ReflectionsUtils.setPrivateField("explosionRadius", EntityCreeper.class, this, radius);
+    }
+
     int collisionCooldown = 6;
 
     @Override
