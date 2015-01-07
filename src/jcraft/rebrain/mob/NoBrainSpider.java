@@ -57,7 +57,7 @@ public class NoBrainSpider extends EntitySpider implements NoBrainEntity {
         this.goalSelector.a(6, new PathfinderGoalLookAtPlayer(this, EntityHuman.class, 8.0F));
         this.goalSelector.a(6, new PathfinderGoalRandomLookaround(this));
 
-        this.targetSelector.a(1, new PathfinderGoalHurtByTarget(this, false, new Class[0]));
+        this.targetSelector.a(1, new PathfinderGoalHurtByTarget(this, true, new Class[] { EntitySpider.class }));
         this.targetSelector.a(2, new CustomPathfinderGoalSpiderNearestAttackableTarget(this, EntityHuman.class, false));
 
         // this.targetSelector.a(3, new PathfinderGoalSpiderNearestAttackableTarget(this, EntityIronGolem.class));
