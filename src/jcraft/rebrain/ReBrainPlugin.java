@@ -52,6 +52,8 @@ public class ReBrainPlugin extends JavaPlugin {
             if (args.length == 0) {
                 final StringBuilder builder = new StringBuilder();
 
+                builder.append("/spawnentity <entity_type> [amount] [-n]").append('\n');
+
                 builder.append("Entity types: ");
 
                 for (NoBrainMobs mob : NoBrainMobs.values()) {
@@ -62,7 +64,7 @@ public class ReBrainPlugin extends JavaPlugin {
 
                 sender.sendMessage(builder.toString());
                 return true;
-            } else if (args.length == 1 || args.length == 2) {
+            } else if (args.length == 1 || args.length == 2 || args.length == 3) {
                 final Player player = (Player) sender;
 
                 final String entityTypeName = args[0];
@@ -89,7 +91,7 @@ public class ReBrainPlugin extends JavaPlugin {
 
                 int amount = 1;
 
-                if (args.length == 2) {
+                if (args.length == 2 || args.length == 3) {
                     try {
                         amount = Integer.parseInt(args[1]);
                     } catch (Exception e) {
@@ -97,8 +99,19 @@ public class ReBrainPlugin extends JavaPlugin {
                     }
                 }
 
+                boolean naturalSpawn = false;
+
+                if (args.length == 2 || args.length == 3) {
+                    final String naturalArg = args[args.length - 1];
+
+                    if (naturalArg.equalsIgnoreCase("-n")) {
+                        naturalSpawn = true;
+                    }
+                }
+
                 for (int i = 0; i < amount; i++) {
-                    NoBrainMobs.spawnEntity(mob, target.getLocation().add(0.5D, 1D, 0.5D), CreatureSpawnEvent.SpawnReason.CUSTOM);
+                    NoBrainMobs.spawnEntity(mob, target.getLocation().add(0.5D, 1D, 0.5D), naturalSpawn ? CreatureSpawnEvent.SpawnReason.NATURAL
+                            : CreatureSpawnEvent.SpawnReason.CUSTOM);
                 }
 
                 return true;
