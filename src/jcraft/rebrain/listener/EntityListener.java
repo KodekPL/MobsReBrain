@@ -16,10 +16,10 @@ import org.bukkit.entity.Tameable;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
-import org.bukkit.event.entity.SpawnerSpawnEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class EntityListener implements Listener {
@@ -30,16 +30,15 @@ public class EntityListener implements Listener {
         this.plugin = plugin;
     }
 
-    @EventHandler(ignoreCancelled = true)
-    public void onEntitySpawnerSpawn(SpawnerSpawnEvent event) {
-        final NoBrainEntity entity = NoBrainMobs.convertToNoBrain(event.getEntity());
+    public void onEntitySpawnerSpawn(Entity spawnedEntity) {
+        final NoBrainEntity entity = NoBrainMobs.convertToNoBrain(spawnedEntity);
 
         if (entity != null) {
             entity.setFromSpawner();
         }
     }
 
-    @EventHandler(ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
     public void onEntitySpawn(CreatureSpawnEvent event) {
         switch (event.getSpawnReason()) {
         case BREEDING:
@@ -58,6 +57,8 @@ public class EntityListener implements Listener {
         case VILLAGE_INVASION:
             spawnEntity(event.getEntity(), event.getSpawnReason());
             return;
+        case SPAWNER:
+            onEntitySpawnerSpawn(event.getEntity());
         default:
             return;
         }
